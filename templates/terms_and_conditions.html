@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Terms and Conditions
+{% endblock title %}
+
+{% block content%}
+<section
+  class="page-title-section bg-img cover-background"
+  data-overlay-dark="0"
+  data-background="{% static 'img/bg/page-title.png' %}"
+>
+  <div class="container">
+    <div class="title-info">
+      <h1 class="display-18 display-md-14 display-xl-12">Terms and Conditions</h1>
+    </div>
+    <div class="breadcrumbs-info">
+      <ul class="ps-0">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'terms_and_conditions' %}">Terms and Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row mt-n2-9">
+      <div class="col-lg-12 mt-2-9">
+        <div class="p-1-6 p-sm-1-9 primary-shadow">
+          <div class="mb-1-9 wow fadeInUp" data-wow-delay="200ms">
+            <h2 class="h2 mb-3">Terms and Conditions</h2>
+            <p class="mb-4">
+              Please read these terms and conditions carefully before using our services.
+            </p>
+
+            <h3 class="h4 mb-3">1. Service Agreement</h3>
+            <p class="mb-4">
+              By engaging VortexEase services, you agree to these terms and conditions. Our services include visa consultation, application assistance, and document preparation support.
+            </p>
+
+            <h3 class="h4 mb-3">2. Service Fees</h3>
+            <p class="mb-4">
+              All service fees are clearly stated before engagement. Fees are non-refundable once services have commenced, except as required by law or as explicitly stated in our refund policy.
+            </p>
+
+            <h3 class="h4 mb-3">3. Client Responsibilities</h3>
+            <p class="mb-4">
+              Clients are responsible for providing accurate and complete information, submitting required documents on time, and paying all applicable fees to embassies and government agencies.
+            </p>
+
+            <h3 class="h4 mb-3">4. Visa Approval</h3>
+            <p class="mb-4">
+              While we provide expert guidance and assistance, visa approval is ultimately at the discretion of the relevant embassy or immigration authority. We cannot guarantee visa approval.
+            </p>
+
+            <h3 class="h4 mb-3">5. Limitation of Liability</h3>
+            <p class="mb-4">
+              VortexEase is not liable for any delays, rejections, or decisions made by immigration authorities. We provide consultation and assistance services only.
+            </p>
+
+            <h3 class="h4 mb-3">6. Privacy Policy</h3>
+            <p class="mb-4">
+              Your personal information will be kept confidential and used only for the purpose of providing our services, in accordance with our privacy policy.
+            </p>
+
+            <h3 class="h4 mb-3">7. Changes to Terms</h3>
+            <p class="mb-0">
+              We reserve the right to modify these terms and conditions at any time. Continued use of our services constitutes acceptance of any changes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content%}

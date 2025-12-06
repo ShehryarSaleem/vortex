@@ -1,0 +1,440 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+The Most Dangerous Writing App
+{% endblock title %}
+
+{% block content %}
+<section class="top-position p-0">
+  <div class="container-fluid px-0">
+    <div class="slider-fade1 owl-carousel owl-theme w-100">
+      <div class="item bg-img cover-background pt-6 pb-10 pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24"
+        data-overlay-dark="0" data-background="{% static 'img/banner/banner-01.jpg' %}">
+        <div class="container pt-6 pt-md-0">
+          <div class="row align-items-center">
+            <div class="col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 py-6 position-relative">
+              <span class="sm-title text-uppercase text-primary letter-spacing-2 font-weight-800">We help for
+                visa</span>
+              <h1 class="display-17 display-sm-11 display-md-9 display-lg-8 display-xl-4 mb-3 title">
+                Best Immigration &amp; Visa Consultations
+              </h1>
+              <p class="lead w-95 w-md-90 w-lg-85 mb-2-2">
+                Our business consulting providing actionable recommend to
+                force enterprise transformation.
+              </p>
+              <a href="{% url 'services' %}" class="butn shadow-dark me-2 my-1 my-sm-0">
+                <span>Learn More</span>
+              </a>
+              <a href="{% url 'blogs' %}" class="butn white text-secondary-hover shadow-dark my-1 my-sm-0">How We
+                Work</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item bg-img cover-background pt-6 pb-10 pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24 slide-migration"
+        data-overlay-dark="0" data-background="{% static 'img/banner/banner-05.webp' %}">
+        <div class="container pt-6 pt-md-0">
+          <div class="row align-items-center">
+            <div class="col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 py-6 position-relative">
+              <span class="sm-title text-uppercase text-primary letter-spacing-2 font-weight-800">We help for
+                visa</span>
+              <h2 class="display-17 display-sm-11 display-md-9 display-lg-8 display-xl-4 mb-3 title">
+                Best Solution to All Migration Matters
+              </h2>
+              <p class="lead w-95 w-md-90 w-lg-85 mb-2-2">
+                Our business consulting providing actionable recommend to
+                force enterprise transformation.
+              </p>
+              <a href="{% url 'services' %}" class="butn shadow-dark me-2 my-1 my-sm-0">
+                <span>Learn More</span>
+              </a>
+              <a href="{% url 'blogs' %}" class="butn white text-secondary-hover shadow-dark my-1 my-sm-0">How We
+                Work</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item bg-img cover-background pt-6 pb-10 pt-sm-6 pb-sm-14 py-md-16 py-lg-20 py-xxl-24"
+        data-overlay-dark="0" data-background="{% static 'img/banner/banner-03.jpg' %}">
+        <div class="container pt-6 pt-md-0">
+          <div class="row align-items-center">
+            <div class="col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 py-6 position-relative">
+              <span class="sm-title text-uppercase text-primary letter-spacing-2 font-weight-800">We help for
+                visa</span>
+              <h2 class="display-17 display-sm-11 display-md-9 display-lg-8 display-xl-4 mb-3 title">
+                Simple Process For Student Visas
+              </h2>
+              <p class="lead w-95 w-md-90 w-lg-85 mb-2-2">
+                Our business consulting providing actionable recommend to
+                force enterprise transformation.
+              </p>
+              <a href="{% url 'services' %}" class="butn shadow-dark me-2 my-1 my-sm-0">
+                <span>Learn More</span>
+              </a>
+              <a href="{% url 'blogs' %}" class="butn white text-secondary-hover shadow-dark my-1 my-sm-0">How We
+                Work</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT
+        = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == == -->
+<section class="pb-xxl-24 about-style-01">
+  <div class="container">
+    <div class="row mt-n2-9">
+      <div class="col-lg-6 mt-2-9 mb-18 mb-lg-0 wow fadeIn" data-wow-delay="200ms">
+        <div class="about-left">
+          <div class="about-shape-2 ani-top-bottom d-none d-sm-block">
+            <img src="{% static 'img/content/shape-02.png' %}" alt="..." />
+          </div>
+          <div class="position-relative d-block">
+            <div class="about-img-1">
+              <img src="{% static 'img/content/about-01.jpg' %}" alt="..." class="rounded" />
+              <div class="about-shape-1 ani-top-bottom">
+                <img src="{% static 'img/content/shape-01.png' %}" alt="..." class="rounded" />
+              </div>
+            </div>
+            <div class="about-img-2">
+              <img src="{% static 'img/content/about-02.jpg' %}" alt="..." class="rounded" />
+            </div>
+            <!-- <div class="about-experience rounded">
+                    <div class="counter">
+                      <h3
+                        class="display-14 display-sm-12 display-lg-10 font-weight-700 text-primary mb-1"
+                      >
+                        <span class="countup">28</span>
+                      </h3>
+                      <span class="font-weight-700 mb-0"
+                        >Years of Experience</span
+                      >
+                    </div>
+                  </div> -->
+            <div class="about-icon d-none d-sm-block">
+              <img src="{% static 'img/content/shape-03.png' %}" alt="..." class="rounded-circle" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-2-9 wow fadeIn" data-wow-delay="300ms">
+        <div class="ps-xl-3">
+          <div class="mb-1-6 mx-auto wow fadeIn" data-wow-delay="100ms">
+            <span class="text-uppercase text-primary letter-spacing-2 font-weight-800">Our Company Intro</span>
+            <h2 class="display-18 display-md-14 display-xl-12 mb-0">
+              Tourist & Study Visa Services The Best Advice
+            </h2>
+          </div>
+          <p class="lead mb-1-6 font-weight-600">
+            We specialize in providing comprehensive tourist and study visa services
+            to help you explore the world and pursue your educational dreams. Our
+            expert team ensures a smooth and successful visa application process.
+          </p>
+          <div class="row mt-n1-9 mb-5">
+            <div class="col-md-6 mt-1-9">
+              <div class="about-mission">
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="about-icon-box">
+                      <img src="{% static 'img/icons/icon-07.png' %}" alt="..." />
+                    </div>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <h4 class="mt-0 mb-2">Our Mission</h4>
+                    <p class="mb-0">
+                      Enhancing every kind of opportunity
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-1-9">
+              <div class="about-mission">
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="about-icon-box">
+                      <img src="{% static 'img/icons/icon-08.png' %}" alt="..." />
+                    </div>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <h4 class="mt-0 mb-2">Our Vision</h4>
+                    <p class="mb-0">
+                      Quick solutions & solve issues quickly
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="d-flex align-items-center mb-5">
+                  <div class="position-relative">
+                    <img
+                      src="img/content/about-03.jpg"
+                      alt="..."
+                      title="..."
+                      class="rounded"
+                    />
+                  </div>
+                  <div class="ps-4">
+                    <h5>
+                      Over 25 years of visa and immigration service experience.
+                    </h5>
+                  </div>
+                </div> -->
+          <a href="about.html" class="butn">About More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRIES WE SERVE
+        = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == == -->
+<section class="py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+  <div class="container">
+    <div class="mb-2-6 mb-lg-6 mx-auto text-center wow fadeIn w-md-80 w-lg-60 w-xl-50" data-wow-delay="100ms">
+      <span class="text-uppercase text-primary letter-spacing-2 font-weight-800">Our Services</span>
+      <h2 class="display-18 display-md-14 display-xl-12 mb-0">
+        Countries We Provide Visa Services For
+      </h2>
+      <p class="lead mb-0 mt-3">
+        We help you get visas for these amazing destinations around the world
+      </p>
+    </div>
+
+    <div class="row mt-n2-9">
+      <!-- Countries -->
+      {% for country in visa_countries %}
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-2-9 wow fadeIn"
+        data-wow-delay="{% widthratio forloop.counter 1 100 %}ms">
+        <a href="{% url 'visa_detail_page' slug=country.slug %}" class="text-decoration-none">
+          <div class="country-card text-center p-3 h-100">
+            <div class="country-flag mb-3">
+              <img src="{{ country.image }}" alt="{{ country.name }} Flag" class="img-fluid rounded-circle shadow-sm"
+                style="width: 80px; height: 80px; object-fit: cover;" />
+            </div>
+            <h5 class="h6 mb-2 font-weight-600">{{ country.name }}</h5>
+            <p class="small text-muted mb-0">{{ country.title }}</p>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+
+
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="contact.html" class="butn">Get Your Visa Today</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- VISA GRID
+        = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == == -->
+<section class="bg-light">
+  <div class="container">
+    <div class="mb-2-6 mb-lg-6 mx-auto text-center wow fadeIn w-md-80 w-lg-60 w-xl-50" data-wow-delay="100ms">
+      <span class="text-uppercase text-primary letter-spacing-2 font-weight-800">We Provide Visa Services</span>
+      <h2 class="display-18 display-md-14 display-xl-12 mb-0">
+        We Provide List of Services for Immigration
+      </h2>
+    </div>
+    <div class="service-carousel owl-carousel owl-theme">
+      <div class="card card-style03 border-color-light-black h-100">
+        <div class="card-img position-relative overflow-hidden rounded-top bg-dark">
+          <img src="{% static 'img/content/visa-01.jpg' %}" alt="..." />
+          <div class="card-icon-img">
+            <img src="{% static 'img/icons/icon-23.png' %}" alt="..." class="w-40px" />
+          </div>
+        </div>
+        <div class="card-body p-1-6 p-sm-1-9 position-relative">
+          <h3 class="h4 mb-3">
+            <a href="{% url 'tourist_visa_service_details' %}">Tourist Visa</a>
+          </h3>
+          <p class="mb-3">
+            Explore the world with our tourist visa services. We help you obtain visas for popular destinations
+            including Schengen countries, USA, Canada, Australia, and New Zealand for leisure and sightseeing purposes.
+          </p>
+          <a href="{% url 'tourist_visa_service_details' %}" class="read-more"><span>Read More</span></a>
+        </div>
+      </div>
+
+      <div class="card card-style03 border-color-light-black h-100">
+        <div class="card-img position-relative overflow-hidden rounded-top bg-dark">
+          <img src="{% static 'img/content/visa-02.jpg' %}" alt="..." />
+          <div class="card-icon-img">
+            <img src="{% static 'img/icons/icon-24.png' %}" alt="..." class="w-40px" />
+          </div>
+        </div>
+        <div class="card-body p-1-6 p-sm-1-9 position-relative">
+          <h3 class="h4 mb-3">
+            Student Visa
+          </h3>
+          <p class="mb-3">
+            Pursue your education abroad with our student visa assistance. We guide you through the application process
+            for studying in top destinations worldwide, ensuring all requirements are met.
+          </p>
+        </div>
+      </div>
+
+      <div class="card card-style03 border-color-light-black h-100">
+        <div class="card-img position-relative overflow-hidden rounded-top bg-dark">
+          <img src="{% static 'img/content/visa-03.jpg' %}" alt="..." />
+          <div class="card-icon-img">
+            <img src="{% static 'img/icons/icon-25.png' %}" alt="..." class="w-40px" />
+          </div>
+        </div>
+        <div class="card-body p-1-6 p-sm-1-9 position-relative">
+          <h3 class="h4 mb-3">
+            Business Visa
+          </h3>
+          <p class="mb-3">
+            Expand your business globally with our business visa services. We assist with visa applications for
+            meetings, conferences, and commercial activities in countries around the world.
+          </p>
+        </div>
+      </div>
+
+      <!-- <div class="card card-style03 border-color-light-black h-100">
+              <div
+                class="card-img position-relative overflow-hidden rounded-top bg-dark"
+              >
+                <img src="{% static 'img/content/visa-04.jpg' %}" alt="..." />
+                <div class="card-icon-img">
+                  <img src="{% static 'img/icons/icon-26.png' %}" alt="..." class="w-40px" />
+                </div>
+              </div>
+              <div class="card-body p-1-6 p-sm-1-9 position-relative">
+                <h3 class="h4 mb-3">
+                  <a href="service-details.html">Family Visa</a>
+                </h3>
+                <p class="mb-3">
+                  Reunite with your loved ones through our family visa services. We help you navigate the process of bringing family members together across international borders.
+                </p>
+                <a href="service-details.html" class="read-more"
+                  ><span>Read More</span></a
+                >
+              </div>
+            </div>
+
+            <div class="card card-style03 border-color-light-black h-100">
+              <div
+                class="card-img position-relative overflow-hidden rounded-top bg-dark"
+              >
+                <img src="{% static 'img/content/visa-05.jpg' %}" alt="..." />
+                <div class="card-icon-img">
+                  <img src="{% static 'img/icons/icon-27.png' %}" alt="..." class="w-40px" />
+                </div>
+              </div>
+              <div class="card-body p-1-6 p-sm-1-9 position-relative">
+                <h3 class="h4 mb-3">
+                  <a href="service-details.html">Job Seeker Visa</a>
+                </h3>
+                <p class="mb-3">
+                  Find employment opportunities abroad with our job seeker visa assistance. We support your journey to work in countries that offer job seeker visa programs.
+                </p>
+                <a href="service-details.html" class="read-more"
+                  ><span>Read More</span></a
+                >
+              </div>
+            </div>
+
+            <div class="card card-style03 border-color-light-black h-100">
+              <div
+                class="card-img position-relative overflow-hidden rounded-top bg-dark"
+              >
+                <img src="{% static 'img/content/visa-06.jpg' %}" alt="..." />
+                <div class="card-icon-img">
+                  <img src="{% static 'img/icons/icon-28.png' %}" alt="..." class="w-40px" />
+                </div>
+              </div>
+              <div class="card-body p-1-6 p-sm-1-9 position-relative">
+                <h3 class="h4 mb-3">
+                  <a href="service-details.html">Migrate Visa</a>
+                </h3>
+                <p class="mb-3">
+                  Start a new life abroad with our immigration visa services. We provide comprehensive support for permanent residency and immigration applications to various countries.
+                </p>
+                <a href="service-details.html" class="read-more"
+                  ><span>Read More</span></a
+                >
+              </div>
+            </div> -->
+    </div>
+  </div>
+</section>
+
+
+<!-- PROFESSIONAL ADVISOR
+        = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == == -->
+<section class="why-choose-style1">
+  <div class="container">
+    <div class="row mt-n1-9">
+      <div class="col-lg-6 mt-1-9 wow fadeIn" data-wow-delay="200ms">
+        <div class="pe-xl-5">
+          <div class="mb-2-2 mx-auto wow fadeIn" data-wow-delay="100ms">
+            <span class="text-uppercase text-primary letter-spacing-2 font-weight-800">Our Benefits</span>
+            <h2 class="display-18 display-md-14 display-xl-12 mb-0">
+              With Our Consultants, You Can be Sure of Success.
+            </h2>
+          </div>
+          <div class="d-flex mt-1-9">
+            <div class="flex-shrink-0 me-4">
+              <img src="{% static 'img/icons/icon-13.png' %}" alt="" title="" class="w-60px" />
+            </div>
+            <div class="flex-grow-1">
+              <h4 class="h5">Direct Online Interviews</h4>
+              <p class="mb-0">
+                Connect with our expert visa consultants from anywhere in the world through secure online video
+                consultations. Get personalized guidance and answers to all your visa questions without leaving your
+                home.
+              </p>
+            </div>
+          </div>
+          <div class="d-flex mt-1-9">
+            <div class="flex-shrink-0 me-4">
+              <img src="{% static 'img/icons/icon-14.png' %}" alt="" title="" class="w-60px" />
+            </div>
+            <div class="flex-grow-1">
+              <h4 class="h5">Quick &amp; Easy Process</h4>
+              <p class="mb-0">
+                Our streamlined application process saves you time and effort. We handle all the paperwork,
+                documentation, and follow-ups, making your visa journey smooth and stress-free from start to finish.
+              </p>
+            </div>
+          </div>
+          <div class="d-flex mt-1-9">
+            <div class="flex-shrink-0 me-4">
+              <img src="{% static 'img/icons/icon-15.png' %}" alt="" title="" class="w-60px" />
+            </div>
+            <div class="flex-grow-1">
+              <h4 class="h5">99% Visa Approvals</h4>
+              <p class="mb-0">
+                With our expert guidance and thorough preparation, we maintain an exceptional visa approval rate. Our
+                team ensures all requirements are met and applications are submitted correctly for maximum success.
+              </p>
+            </div>
+          </div>
+
+          <a href="{% url 'services' %}" class="butn secondary mt-2-4">Discover More</a>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-1-9 d-none d-lg-block wow fadeIn" data-wow-delay="400ms">
+        <div class="text-center position-relative">
+          <img src="{% static 'img/content/advisor-01.jpg' %}" alt="..." class="rounded" />
+          <div class="why-choose-box d-none d-sm-block rounded">
+            <h5 class="text-white h4">
+              Your Trusted Partner for Global Visa Solutions.
+            </h5>
+            <span class="text-white opacity9"> - VortexEase Team</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% include "component/testmonial.html" %}
+{% endblock content %}

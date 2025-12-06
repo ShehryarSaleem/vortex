@@ -1,0 +1,44 @@
+main_banner:
+  title: Tourist in France
+  image: https://www.abglobalconsultant.com/wp-content/uploads/2025/06/france-paris-eiffel-tower-seine-sunset.webp
+heading: France Tourist Visa
+description: A France Tourist Visa lets you experience France’s timeless charm—from Parisian boulevards and world-class museums to Provence’s lavender fields and the French Riviera’s beaches. As part of the Schengen Area, this short-stay visa usually permits stays up to 90 days within 180 days for tourism and leisure. Applicants typically need a valid passport, confirmed accommodation, round-trip plan, travel insurance, and proof of funds. After applying and attending the visa appointment, you can enjoy France’s gastronomy, art, history, and scenic countryside.
+images:
+  - https://images.unsplash.com/photo-1431274172761-fca41d930114?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/provence-lavender-fields-france.webp
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/french-riviera-nice-promenade-france.webp
+sections:
+  - title: Tourist Cities in France
+    description: Paris dazzles with the Eiffel Tower, the Louvre, and café culture along the Seine. Nice anchors the French Riviera with sunny beaches and a laid-back promenade. Lyon blends Roman heritage with a renowned culinary scene. Bordeaux invites wine lovers, while Strasbourg enchants with half-timbered houses and a majestic cathedral. Marseille’s Mediterranean energy, Mont Saint-Michel’s abbey, and the châteaux of the Loire Valley round out unforgettable itineraries.
+
+  - title: Benefits
+    description: Visiting France on a tourist visa offers seamless travel, rich culture, and easy access to diverse regions—from vibrant cities to serene countryside.
+    description_benefits:
+      - Travel across the Schengen Area for up to 90 days in 180 days
+      - "Iconic culture: Louvre, Musée d'Orsay, Versailles, and UNESCO-listed sites"
+      - "Scenic diversity: Riviera beaches, Alps, Provence, Loire châteaux"
+      - Efficient trains (TGV/TER) for fast intercity connections
+      - "Easy day trips: Versailles, Giverny, Mont Saint-Michel, Champagne country"
+
+  - title: Estimated Cost
+    description: Breakdown of costs for your France tourist visa application.
+    description_benefits:
+      - "Embassy appointment fee: £25–£30"
+      - "Travel insurance: Approximately £15"
+      - "Embassy visa fee: Around £70"
+      - "Flights: £40–£50 (varies by time and destination)"
+      - "Our service fee: £125 (discount available for referrals)"
+      - "Processing time: Approximately 2 weeks after the appointment"
+checklist_cta:
+  cta_title: Download Checklist
+  cta_link: https://www.abglobalconsultant.com/wp-content/uploads/2024/10/checklist.pdf
+expenses_sections:
+  title: France Expenses
+  expenses:
+    - Appointment fee (VFS/TLS, if applicable) (£25–£35)
+    - Embassy/Consulate visa fee (short-stay) (£70–£80)
+    - Optional passport courier/collection (£20–£35)
+    - Travel insurance (Schengen-compliant) (~£10–£20 for short trips)
+    - Bank statement (recommended balance £1200+; prefer £1500+)
+    - Return ticket estimate (£40–£120, varies by dates)
+    - Hotel/Accommodation reservation (pay-on-arrival or refundable booking)

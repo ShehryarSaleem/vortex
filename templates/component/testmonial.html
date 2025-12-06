@@ -1,0 +1,31 @@
+{% load static %}
+<section class="bg-img cover-background" data-background="{% static 'img/bg/bg-01.jpg' %}">
+  <div class="container">
+    <div class="mb-2-6 mb-lg-6 mx-auto text-center wow fadeIn w-md-80 w-lg-60 w-xl-50" data-wow-delay="100ms">
+      <span class="text-uppercase text-primary letter-spacing-2 font-weight-800">{{ context.title }}</span>
+      <h2 class="display-18 display-md-14 display-xl-12 mb-0">
+        {{ context.heading }}
+      </h2>
+    </div>
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-9">
+        <div class="position-relative">
+          <div class="testimonial-carousel1 owl-carousel owl-theme">
+            {% for review in context.reviews%}
+            <div class="position-relative">
+              <div class="testimentional-mainDiv" id="testimentional-mainDiv">
+                <div class="contentDiv">
+                </div>
+                <div class="imageSide">
+                  <img src="{% static review.image %}" alt="" />
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

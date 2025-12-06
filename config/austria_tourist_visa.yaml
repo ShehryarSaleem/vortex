@@ -1,0 +1,45 @@
+main_banner:
+  title: Tourist in Austria
+  image: https://www.abglobalconsultant.com/wp-content/uploads/2025/06/austria-hallstatt-lake-mountains.webp
+heading: Austria Tourist Visa
+description: An Austria Tourist Visa offers access to alpine scenery, imperial architecture, and classical music heritage—from Vienna’s palaces and concert halls to Salzburg’s baroque charm and Tyrol’s mountain valleys. As part of the Schengen Area, this short-stay visa commonly permits up to 90 days within 180 days for tourism and leisure. Applicants typically need a valid passport, accommodation details, return travel, travel insurance, and proof of funds. After your appointment, enjoy Austria’s museums, cafés, and outdoor adventures.
+images:
+  - https://images.unsplash.com/photo-1597086831879-756db15e81d3?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/salzburg-old-town-austria.webp
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/tyrol-alps-austria.webp
+sections:
+  - title: Tourist Cities in Austria
+    description: Vienna blends imperial grandeur with coffeehouse culture and a vibrant arts scene. Salzburg charms with fortress views and Mozart heritage. Innsbruck offers alpine sports and colorful medieval streets, while Hallstatt showcases lakeside beauty. Graz and Linz add contemporary flair and riverside walks.
+
+  - title: Benefits
+    description: Visiting Austria on a tourist visa combines culture and alpine nature with efficient rail connections.
+    description_benefits:
+      - Travel across the Schengen Area for up to 90 days in 180 days
+      - "Imperial and musical heritage: Schönbrunn, Hofburg, Vienna State Opera"
+      - "Alpine experiences: Tyrol hiking, Salzburg region, ski resorts"
+      - Efficient ÖBB rail network and scenic routes like Semmering
+      - "Seasonal highlights: Christmas markets, summer lakes, and mountain trails"
+
+  - title: Estimated Cost
+    description: Breakdown of costs for your Austria tourist visa application.
+    description_benefits:
+      - "Embassy appointment fee: £25–£30"
+      - "Travel insurance: Approximately £15"
+      - "Embassy visa fee: Around £70"
+      - "Flights: £40–£50 (varies by time and destination)"
+      - "Our service fee: £125 (discount available for referrals)"
+      - "Processing time: Approximately 2 weeks after the appointment"
+
+checklist_cta:
+  cta_title: Download Checklist
+  cta_link: https://www.abglobalconsultant.com/wp-content/uploads/2024/10/checklist.pdf
+expenses_sections:
+  title: Austria Expenses
+  expenses:
+    - Appointment fee (VFS/TLS, if applicable) (£25–£35)
+    - Embassy/Consulate visa fee (short-stay) (£70–£80)
+    - Optional passport courier/collection (£20–£35)
+    - Travel insurance (Schengen-compliant) (~£10–£20 for short trips)
+    - Bank statement (recommended balance £1200+; prefer £1500+)
+    - Return ticket estimate (£40–£120, varies by dates)
+    - Hotel/Accommodation reservation (pay-on-arrival or refundable booking)

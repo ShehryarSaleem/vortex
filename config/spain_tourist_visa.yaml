@@ -1,0 +1,44 @@
+main_banner:
+  title: Tourist in Spain
+  image: https://www.abglobalconsultant.com/wp-content/uploads/2025/06/spain-barcelona-sagrada-familia-sunset.webp
+heading: Spain Tourist Visa
+description: A Spain Tourist Visa opens the door to Spain’s vibrant cities, sun-soaked coasts, and rich heritage—from Gaudí’s masterpieces in Barcelona to Andalusia’s Moorish palaces. As part of the Schengen Area, the short-stay visa generally allows up to 90 days within a 180-day period for tourism and leisure. Applicants typically need a valid passport, accommodation details, round-trip travel proof, travel insurance, and proof of funds. After applying and attending the visa appointment, you can enjoy Spain’s tapas culture, festivals, beaches, and historic towns.
+images:
+  - https://images.unsplash.com/photo-1578912996078-305d92249aa6?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/seville-plaza-de-espana-spain.webp
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/granada-alhambra-spain.webp
+sections:
+  - title: Tourist Cities in Spain
+    description: Barcelona captivates with Sagrada Família, Park Güell, and beach life. Madrid offers grand boulevards and the Golden Triangle of Art. Seville charms with flamenco, the Alcázar, and a stunning cathedral. Valencia blends futuristic architecture with a historic center and seaside. Granada’s Alhambra, Bilbao’s Guggenheim, and the Balearic and Canary Islands offer unforgettable escapes.
+
+  - title: Benefits
+    description: Visiting Spain on a tourist visa combines culture, cuisine, coastline, and efficient transport for diverse itineraries.
+    description_benefits:
+      - Travel across the Schengen Area for up to 90 days in 180 days
+      - "World-class culture: Prado, Sagrada Família, Alhambra, Guggenheim Bilbao"
+      - "Beaches and islands: Costa del Sol, Balearics, Canary Islands"
+      - High-speed AVE trains linking major cities quickly
+      - "Iconic festivals and cuisine: La Tomatina, Semana Santa, tapas, paella"
+
+  - title: Estimated Cost
+    description: Breakdown of costs for your Spain tourist visa application.
+    description_benefits:
+      - "Embassy appointment fee: £25–£30"
+      - "Travel insurance: Approximately £15"
+      - "Embassy visa fee: Around £70"
+      - "Flights: £40–£50 (varies by time and destination)"
+      - "Our service fee: £125 (discount available for referrals)"
+      - "Processing time: Approximately 2 weeks after the appointment"
+checklist_cta:
+  cta_title: Download Checklist
+  cta_link: https://www.abglobalconsultant.com/wp-content/uploads/2024/10/checklist.pdf
+expenses_sections:
+  title: Spain Expenses
+  expenses:
+    - Appointment fee (BLS/VFS, if applicable) (£25–£35)
+    - Embassy/Consulate visa fee (short-stay) (£70–£80)
+    - Optional passport courier/collection (£20–£35)
+    - Travel insurance (Schengen-compliant) (~£10–£20 for short trips)
+    - Bank statement (recommended balance £1200+; prefer £1500+)
+    - Return ticket estimate (£40–£120, varies by dates)
+    - Hotel/Accommodation reservation (pay-on-arrival or refundable booking)

@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Contact us
+{% endblock title %}
+
+{% block content%}
+<section
+class="page-title-section bg-img cover-background"
+data-overlay-dark="0"
+data-background="{% static 'img/bg/page-title.png' %}"
+>
+<div class="container">
+  <div class="title-info">
+    <h1 class="display-18 display-md-14 display-xl-12">Contact Us</h1>
+  </div>
+  <div class="breadcrumbs-info">
+    <ul class="ps-0">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT INFO
+ == = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == -->
+<section>
+<div class="container">
+  <div class="row mt-n1-9 gx-xxl-5">
+    <div
+      class="col-md-6 col-lg-4 mt-1-9 wow fadeInUp"
+      data-wow-delay="200ms"
+    >
+      <div class="contact-info-block h-100">
+        <div
+          class="contact-img position-relative bg-img"
+          data-background="img/content/contact-01.jpg"
+        >
+          <div class="bg-overlay"></div>
+          <div class="content-text text-center">
+            <h3 class="h4 mb-3">Phone</h3>
+            <div class="d-flex align-items-center justify-content-center gap-3">
+              <a href="tel:+447539080846" class="text-white" style="font-size: 20px; text-decoration: none;">
+                <i class="fas fa-phone-alt"></i>
+              </a>
+              <a href="https://wa.me/447539080846" target="_blank" class="text-white" style="font-size: 20px; text-decoration: none;">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+            <p class="mb-0 mt-2">+44 7539 080846</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-md-6 col-lg-4 mt-1-9 wow fadeInUp d-none"
+      data-wow-delay="300ms"
+    >
+      <div class="contact-info-block h-100">
+        <div
+          class="contact-img position-relative bg-img"
+          data-background="img/content/contact-02.jpg"
+        >
+          <div class="bg-overlay"></div>
+          <div class="content-text">
+            <i
+              class="fas fa-map-marker-alt display-15 mb-3 d-block"
+            ></i>
+            <h3 class="h4 mb-3">Location</h3>
+            <p class="mb-0">66 Guild Street 512B, Great North Town.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-md-6 col-lg-4 mt-1-9 wow fadeInUp"
+      data-wow-delay="400ms"
+    >
+      <div class="contact-info-block h-100">
+        <div
+          class="contact-img position-relative bg-img"
+          data-background="img/content/contact-03.jpg"
+        >
+          <div class="bg-overlay"></div>
+          <div class="content-text">
+            <i class="far fa-envelope display-15 mb-3 d-block"></i>
+            <h3 class="h4 mb-3">Email</h3>
+            <p class="mb-0">contact@vortexease.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-md-6 col-lg-4 mt-1-9 wow fadeInUp"
+      data-wow-delay="500ms"
+    >
+      <div class="contact-info-block h-100">
+        <div
+          class="contact-img position-relative bg-img"
+          data-background="img/content/contact-01.jpg"
+        >
+          <div class="bg-overlay"></div>
+          <div class="content-text">
+            <i class="fas fa-share-alt display-15 mb-3 d-block"></i>
+            <h3 class="h4 mb-3">Follow Us</h3>
+            <div class="d-flex align-items-center justify-content-center gap-3">
+              <a href="https://www.facebook.com/vortexease" target="_blank" class="text-white" style="font-size: 24px;">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://www.instagram.com/vortexease" target="_blank" class="text-white" style="font-size: 24px;">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT FORM
+ == = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == = == -->
+<section class="pt-0">
+<div class="container">
+  <div class="row mt-n5 align-items-center">
+    <div class="col-lg-6 mt-5 wow fadeInUp" data-wow-delay="200ms">
+      <div class="pe-lg-5">
+        <h2 class="mb-1-9">Send Us a Message</h2>
+        <form
+          class="contact quform"
+          action="https://abroad.websitelayout.net/quform/contact.php"
+          method="post"
+          enctype="multipart/form-data"
+          onclick=""
+        >
+          <div class="quform-elements">
+            <div class="row">
+              <!-- Begin Text input element -->
+              <div class="col-md-6">
+                <div class="quform-element form-group mb-3">
+                  <label for="name"
+                    >Your Name
+                    <span class="quform-required">*</span></label
+                  >
+                  <div class="quform-input">
+                    <input
+                      class="form-control"
+                      id="name"
+                      type="text"
+                      name="name"
+                      placeholder="Your name here"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- End Text input element -->
+
+              <!-- Begin Text input element -->
+              <div class="col-md-6">
+                <div class="quform-element form-group mb-3">
+                  <label for="email"
+                    >Your Email
+                    <span class="quform-required">*</span></label
+                  >
+                  <div class="quform-input">
+                    <input
+                      class="form-control"
+                      id="email"
+                      type="text"
+                      name="email"
+                      placeholder="Your email here"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- End Text input element -->
+
+              <!-- Begin Select element -->
+              <div class="col-md-12">
+                <div class="quform-element form-group mb-3">
+                  <label for="subject"
+                    >Your Subject
+                    <span class="quform-required">*</span></label
+                  >
+                  <div class="quform-input">
+                    <div class="custom-country-select">
+                      <select
+                        class="form-control"
+                        id="subject"
+                        name="subject"
+                        required
+                        style="display: none;"
+                      >
+                        <option value="">Select a country</option>
+                        {% for country in visa_countries %}
+                        <option value="{{ country.name }} Tourist Visa" data-image="{{ country.image }}">
+                          {{ country.name }} Tourist Visa
+                        </option>
+                        {% endfor %}
+                      </select>
+                      <div class="custom-select-wrapper">
+                        <div class="custom-select-trigger">
+                          <span class="select-value">Select a country</span>
+                          <span class="select-arrow">▼</span>
+                        </div>
+                        <div class="custom-select-options">
+                          {% for country in visa_countries %}
+                          <div class="custom-select-option" data-value="{{ country.name }} Tourist Visa">
+                            <img src="{{ country.image }}" alt="{{ country.name }}" class="country-flag-small" />
+                            <span>{{ country.name }} Tourist Visa</span>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Select element -->
+
+              <!-- Begin Textarea element -->
+              <div class="col-md-12">
+                <div class="quform-element form-group mb-3">
+                  <label for="message"
+                    >Message
+                    <span class="quform-required">*</span></label
+                  >
+                  <div class="quform-input">
+                    <textarea
+                      class="form-control h-100"
+                      id="message"
+                      name="message"
+                      rows="6"
+                      placeholder="Tell us a few words"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- End Textarea element -->
+
+              <!-- Begin Captcha element -->
+              <!-- <div class="col-md-12">
+                <div class="quform-element mb-3">
+                  <div class="form-group">
+                    <div class="quform-input">
+                      <input
+                        class="form-control"
+                        id="type_the_word"
+                        type="text"
+                        name="type_the_word"
+                        placeholder="Type the below word"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="quform-captcha">
+                      <div class="quform-captcha-inner">
+                        <img
+                          src="quform/images/captcha/courier-new-light.png"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <!-- End Captcha element -->
+
+              <!-- Begin Submit button -->
+              <div class="col-md-12">
+                <div class="quform-submit-inner">
+                  <button type="submit" class="butn border-none">
+                    <span>Enquire Now</span>
+                  </button>
+                </div>
+                <div class="quform-loading-wrap text-start">
+                  <span class="quform-loading"></span>
+                </div>
+              </div>
+              <!-- End Submit button -->
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div
+      class="col-lg-6 mt-5 wow fadeInUp d-none d-lg-block"
+      data-wow-delay="400ms"
+    >
+      <div>
+        <img src="{% static 'img/content/contact-04.jpg' %}" alt="..." />
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock content%}

@@ -1,0 +1,466 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="author" content="Chitrakoot Web" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="keywords"
+      content="Immigration and Visa Consulting HTML Template"
+    />
+    <meta
+      name="description"
+      content="Abroad - Immigration and Visa Consulting HTML Template"
+    />
+    <title>
+      {% block title %}Vortex Ease{% endblock %}
+    </title>
+
+
+
+    <meta
+        name="viewport"
+        content="height=device-height, width=device-width, initial-scale=1"
+    />
+        <link rel="shortcut icon" href="{% static 'img/logos/favicon.ico' %}" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/logos/favicon-16x16.png' %}" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/logos/favicon-32x32.png' %}" />
+        <link rel="apple-touch-icon" href="{% static 'img/logos/apple-touch-icon.png' %}" />
+
+    <!-- plugins -->
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}" />
+
+    <!-- search css -->
+    <link rel="stylesheet" href="{% static 'search/search.css' %}" />
+
+    <!-- quform css -->
+    <link rel="stylesheet" href="{% static 'quform/css/base.css' %}" />
+
+    <!-- theme core css -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+    <!-- Custom styles for countries section -->
+    <style>
+      .country-card {
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border: 1px solid #f0f0f0;
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .country-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        border-color: #007bff;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .country-flag img {
+        transition: all 0.3s ease;
+        border: 3px solid #fff;
+      }
+
+      .country-card:hover .country-flag img {
+        transform: scale(1.1);
+        border-color: #007bff;
+      }
+
+      .country-card h5 {
+        color: #333;
+        transition: color 0.3s ease;
+      }
+
+      .country-card:hover h5 {
+        color: #007bff;
+      }
+
+      /* Ensure last breadcrumb item has the correct color */
+      .page-title-section .breadcrumbs-info ul li:last-child a {
+        color: #e02454 !important;
+      }
+
+      /* Add shadow and styling to page title section for better visibility */
+      .page-title-section .title-info h1 {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        color: #003a66 !important;
+      }
+
+      .page-title-section .breadcrumbs-info ul li a {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        color: #003a66 !important;
+      }
+
+      .page-title-section .breadcrumbs-info ul li:last-child a {
+        color: #e02454 !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        font-weight: 800;
+      }
+
+      .page-title-section .breadcrumbs-info ul li:after {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Breadcrumbs margin on all pages */
+      .page-title-section .breadcrumbs-info {
+        margin-left: 10%;
+      }
+
+      /* Add shadow to slideshow text for better visibility - only for migration slide */
+      .slide-migration .sm-title {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .slide-migration .title,
+      .slide-migration h1.title,
+      .slide-migration h2.title {
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 0, 0, 0.3);
+        color: #fff !important;
+      }
+
+      .slide-migration .lead {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        color: #fff !important;
+      }
+
+      /* Center images in success stories section */
+      .testimentional-mainDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .testimentional-mainDiv .imageSide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .testimentional-mainDiv .imageSide img {
+        margin: 0 auto;
+        display: block;
+      }
+
+      .testimentional-mainDiv .contentDiv {
+        display: none;
+      }
+
+      /* Make flags fill the price-img circle */
+      .pricing-style01 .price-img {
+        background: transparent !important;
+        overflow: hidden;
+        padding: 0 !important;
+      }
+
+      .pricing-style01 .price-img img {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        display: block;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      /* Fade other service cards (non-Tourist Visa) */
+      .services-section .card:not(:first-child) {
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+      }
+
+      .services-section .card:not(:first-child):hover {
+        opacity: 1;
+      }
+
+      /* Hide/fade Read More button on other cards (not Tourist Visa) */
+      .services-section .row > div:not(:first-child) .read-more,
+      .services-section .row > div:not(:first-child) .read-more span {
+        opacity: 0.3 !important;
+        pointer-events: none !important;
+        cursor: not-allowed !important;
+        color: #999 !important;
+      }
+
+      /* Ensure Tourist Visa Read More button stays active and red */
+      .services-section .row > div:first-child .read-more {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+      }
+
+      /* Estimated Cost section styling - reduce spacing and smaller header */
+      .estimated-cost-section {
+        margin-top: 0.5rem !important;
+        padding-top: 0.75rem !important;
+        border-top: 1px dotted #ccc !important;
+      }
+
+      .estimated-cost-header {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+
+      /* Dotted line divider between Benefits and Estimated Cost in same card */
+      .estimated-cost-divider {
+        border: none;
+        border-top: 1px dotted #ccc;
+        margin: 1.5rem auto;
+        padding: 0;
+        width: 80%;
+        max-width: 400px;
+        height: 0;
+        background: none;
+      }
+
+      /* Reduce spacing between Benefits and Estimated Cost sections */
+      .primary-shadow:not(.estimated-cost-section) + .estimated-cost-section {
+        margin-top: 0.5rem !important;
+      }
+
+      /* Style for country dropdown with images */
+      #subject {
+        background-image: none;
+        padding-left: 40px;
+      }
+
+      #subject option {
+        padding: 10px;
+        background-repeat: no-repeat;
+        background-position: left center;
+        padding-left: 40px;
+      }
+
+      /* Custom country select dropdown with flags */
+      .custom-country-select {
+        position: relative;
+      }
+
+      .custom-select-wrapper {
+        position: relative;
+      }
+
+      .custom-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        min-height: 45px;
+      }
+
+      .custom-select-trigger .select-value {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .custom-select-trigger .select-arrow {
+        transition: transform 0.3s;
+      }
+
+      .custom-select-wrapper.open .custom-select-trigger .select-arrow {
+        transform: rotate(180deg);
+      }
+
+      .custom-select-options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 1000;
+        display: none;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      .custom-select-wrapper.open .custom-select-options {
+        display: block;
+      }
+
+      .custom-select-option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 15px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .custom-select-option:hover {
+        background-color: #f5f5f5;
+      }
+
+      .custom-select-option.selected {
+        background-color: #e3f2fd;
+      }
+
+      .country-flag-small {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid #ddd;
+      }
+
+      .custom-select-trigger .country-flag-small {
+        width: 25px;
+        height: 25px;
+      }
+
+      /* Match image height with form section */
+      section.pt-0 .row.align-items-center {
+        align-items: flex-start !important;
+      }
+
+      section.pt-0 .col-lg-6:first-child {
+        height: 100%;
+      }
+
+      section.pt-0 .col-lg-6:last-child {
+        height: 100%;
+        display: flex;
+      }
+
+      section.pt-0 .col-lg-6:last-child > div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+      }
+
+      section.pt-0 .col-lg-6:last-child img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        max-height: 100%;
+      }
+    </style>
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+    <div class="main-wrapper">
+    {% block header %}
+    {% include 'global/header.html' %}
+    {% endblock %}
+
+
+     {% block content %}{% endblock content %}
+
+     {% block footer %}
+      {% include 'global/footer.html' %}
+      {% endblock %}
+    </div>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <!-- popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+
+    <!-- bootstrap -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- core.min.js -->
+    <script src="{% static 'js/core.min.js' %}"></script>
+
+    <!-- search -->
+    <script src="{% static 'search/search.js' %}"></script>
+
+    <!-- custom scripts -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- Custom country select script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const selectWrapper = document.querySelector('.custom-select-wrapper');
+        const selectTrigger = document.querySelector('.custom-select-trigger');
+        const selectOptions = document.querySelectorAll('.custom-select-option');
+        const hiddenSelect = document.getElementById('subject');
+
+        if (selectTrigger && selectOptions.length > 0) {
+          selectTrigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            selectWrapper.classList.toggle('open');
+          });
+
+          selectOptions.forEach(option => {
+            option.addEventListener('click', function() {
+              const value = this.getAttribute('data-value');
+              const text = this.querySelector('span').textContent;
+              const img = this.querySelector('img').cloneNode(true);
+
+              hiddenSelect.value = value;
+
+              // Update trigger display
+              const selectValue = selectTrigger.querySelector('.select-value');
+              selectValue.innerHTML = '';
+              selectValue.appendChild(img);
+              selectValue.appendChild(document.createTextNode(' ' + text));
+
+              // Update selected state
+              selectOptions.forEach(opt => opt.classList.remove('selected'));
+              this.classList.add('selected');
+
+              selectWrapper.classList.remove('open');
+            });
+          });
+
+          // Close when clicking outside
+          document.addEventListener('click', function(e) {
+            if (!selectWrapper.contains(e.target)) {
+              selectWrapper.classList.remove('open');
+            }
+          });
+        }
+
+        // Match image height with form section in contact page
+        const formSection = document.querySelector('section.pt-0 .col-lg-6:first-child .pe-lg-5');
+        const imageSection = document.querySelector('section.pt-0 .col-lg-6:last-child > div');
+        const image = document.querySelector('section.pt-0 .col-lg-6:last-child img');
+
+        if (formSection && imageSection && image) {
+          function matchHeights() {
+            const formHeight = formSection.offsetHeight;
+            imageSection.style.height = formHeight + 'px';
+            image.style.height = formHeight + 'px';
+            image.style.maxHeight = formHeight + 'px';
+          }
+
+          // Match heights after page load
+          setTimeout(matchHeights, 100);
+          window.addEventListener('resize', matchHeights);
+        }
+      });
+    </script>
+
+    <!-- form plugins js -->
+    <script src="{% static 'quform/js/plugins.js' %}"></script>
+
+    <!-- form scripts js -->
+    <script src="{% static 'quform/js/scripts.js' %}"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  About Us
+{% endblock title %}
+
+{% block content%}
+<section
+  class="page-title-section bg-img cover-background"
+  data-overlay-dark="0"
+  data-background="{% static 'img/bg/page-title.png' %}"
+>
+  <div class="container">
+    <div class="title-info">
+      <h1 class="display-18 display-md-14 display-xl-12">About Us</h1>
+    </div>
+    <div class="breadcrumbs-info">
+      <ul class="ps-0">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row mt-n2-9">
+      <div class="col-lg-8 mt-2-9">
+        <div class="p-1-6 p-sm-1-9 primary-shadow">
+          <div class="mb-1-9 wow fadeInUp" data-wow-delay="200ms">
+            <h2 class="h2 mb-3">Welcome to VortexEase</h2>
+            <p class="mb-3">
+              VortexEase is a leading immigration and visa consulting service dedicated to helping individuals and families navigate the complex world of international travel and immigration. With years of experience and a team of expert consultants, we provide comprehensive visa services for destinations worldwide.
+            </p>
+            <p class="mb-3">
+              Our mission is to make the visa application process as smooth and stress-free as possible. We understand that applying for visas can be overwhelming, which is why we offer personalized guidance and support throughout your entire journey.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-1-6 p-sm-1-9 primary-shadow mt-2-9">
+          <div class="mb-1-9 wow fadeInUp" data-wow-delay="200ms">
+            <h3 class="h2 mb-3">Our Services</h3>
+            <p class="mb-3">
+              We offer a wide range of visa and immigration services including:
+            </p>
+            <ul class="list-unstyled mb-0">
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span>Tourist visas for popular destinations including Schengen countries, USA, Canada, Australia, and New Zealand</span>
+              </li>
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span>Student visa assistance for international education opportunities</span>
+              </li>
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span>Business visa services for corporate travel and meetings</span>
+              </li>
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span>Family visa support for reuniting with loved ones</span>
+              </li>
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span>Job seeker visa assistance for employment opportunities abroad</span>
+              </li>
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span>Immigration and permanent residency services</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="p-1-6 p-sm-1-9 primary-shadow mt-2-9">
+          <div class="mb-1-9 wow fadeInUp" data-wow-delay="200ms">
+            <h3 class="h2 mb-3">Why Choose Us?</h3>
+            <p class="mb-3">
+              At VortexEase, we pride ourselves on providing exceptional service and support:
+            </p>
+            <ul class="list-unstyled mb-0">
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span><strong>Expert Team:</strong> Our consultants have extensive knowledge and experience in visa and immigration processes</span>
+              </li>
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span><strong>Personalized Service:</strong> We provide tailored guidance based on your specific needs and circumstances</span>
+              </li>
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span><strong>Transparent Process:</strong> We keep you informed at every step with clear communication and updates</span>
+              </li>
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span><strong>High Success Rate:</strong> Our expertise and attention to detail result in successful visa applications</span>
+              </li>
+              <li class="d-flex align-items-start display-29 mb-3">
+                <i class="ti-check text-secondary pe-3 font-weight-800 pt-2"></i>
+                <span><strong>Comprehensive Support:</strong> From document preparation to appointment scheduling, we handle it all</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <a href="{% url 'contact' %}" class="butn md">
+            <span>Contact Us Today</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-2-9">
+        <div class="sidebar ps-xl-4">
+          <div class="widget wow fadeInUp" data-wow-delay="200ms">
+            <div class="widget-content">
+              <h4 class="h5 mb-3">Contact Information</h4>
+              <div class="mb-3">
+                <p class="mb-2"><strong>Phone:</strong></p>
+                <p class="mb-0">+44 7539 080846</p>
+              </div>
+              <div class="mb-3">
+                <p class="mb-2"><strong>Email:</strong></p>
+                <p class="mb-0">contact@vortexease.com</p>
+              </div>
+              <div class="mt-3">
+                <a href="{% url 'contact' %}" class="butn md">
+                  <span>Get in Touch</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content%}

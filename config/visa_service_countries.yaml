@@ -1,0 +1,62 @@
+countries:
+  # Schengen countries in alphabetical order
+  - name: Austria
+    image: https://flagcdn.com/w320/at.png
+    slug: austria-tourist-visa
+    title: Tourist & Study Visas
+
+  - name: France
+    image: https://flagcdn.com/w320/fr.png
+    slug: france-tourist-visa
+    title: Tourist & Study Visas
+
+  - name: Germany
+    image: https://flagcdn.com/w320/de.png
+    slug: germany-tourist-visa
+    title: Tourist & Study Visas
+
+  - name: Greece
+    image: https://flagcdn.com/w320/gr.png
+    slug: greece-tourist-visa
+    title: Tourist & Study Visas
+
+  - name: Italy
+    image: https://flagcdn.com/w320/it.png
+    slug: italy-tourist-visa
+    title: Tourist & Study Visas
+
+  - name: Netherlands
+    image: https://flagcdn.com/w320/nl.png
+    slug: netherlands-tourist-visa
+    title: Tourist & Study Visas
+
+  - name: Spain
+    image: https://flagcdn.com/w320/es.png
+    slug: spain-tourist-visa
+    title: Tourist & Study Visas
+
+  - name: Switzerland
+    image: https://flagcdn.com/w320/ch.png
+    slug: switzerland-tourist-visa
+    title: Tourist & Study Visas
+
+  # Non-Schengen countries at the end
+  - name: Australia
+    image: https://flagcdn.com/w320/au.png
+    slug: australia-tourist-visa
+    title: Tourist & Study Visas
+
+  - name: Canada
+    image: https://flagcdn.com/w320/ca.png
+    slug: canada-tourist-visa
+    title: Tourist & Study Visas
+
+  - name: USA
+    image: https://flagcdn.com/w320/us.png
+    slug: usa-tourist-visa
+    title: Tourist & Study Visas
+
+  - name: New Zealand
+    image: https://flagcdn.com/w320/nz.png
+    slug: new-zealand-tourist-visa
+    title: Tourist & Study Visas

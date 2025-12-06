@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Tourist visa
+{% endblock title %}
+
+{% block content%}
+
+
+    <section
+    class="page-title-section bg-img cover-background"
+    data-overlay-dark="0"
+    data-background="{% static 'img/bg/page-title.png' %}"
+  >
+    <div class="container">
+      <div class="title-info">
+        <h1 class="display-18 display-md-14 display-xl-12">{{ config.heading }}</h1>
+      </div>
+      <div class="breadcrumbs-info">
+        <ul class="ps-0">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="#">{{ config.heading }}</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="container">
+      <div class="row mt-n2-9">
+        <div class="col-lg-8 mt-2-9">
+          <div class="row">
+            <div class="col-lg-12">
+              <div
+                class="position-relative wow fadeInUp"
+                data-wow-delay="200ms"
+              >
+                <img
+                  src="{{ config.images.0 }}"
+                  alt="..."
+                  class="rounded-top"
+                  style="max-height: 500px; width: 100%; object-fit: cover; object-position: center;"
+                />
+              </div>
+              {% for section in config.sections %}
+                {% if section.is_benefits %}
+                  <div class="p-1-6 p-sm-1-9 primary-shadow">
+                    <div class="mb-1-9 wow fadeInUp" data-wow-delay="200ms">
+                      <h3 class="h2">
+                        {{ section.title }}
+                      </h3>
+                      <p class="mb-0">
+                        {{ section.description }}
+                      </p>
+                    </div>
+                    {% if section.description_benefits %}
+                    <div class="row mb-1-9">
+                      <div
+                        class="col-xl-6 order-2 order-xl-1 wow fadeInUp"
+                        data-wow-delay="200ms"
+                      >
+                        <ul class="list-unstyled mb-0">
+                            {% for benefit in section.description_benefits %}
+                          <li class="d-flex align-items-center display-29 mb-3">
+                            <i
+                              class="ti-check text-secondary pe-3 font-weight-800 pt-2"
+                            ></i
+                            >{{ benefit|safe }}
+                          </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                    {% endif %}
+
+                    {% if section.is_estimated_cost_next %}
+                      <div class="estimated-cost-divider"></div>
+                      <div class="mb-1-9 wow fadeInUp" data-wow-delay="200ms">
+                        <h3 class="h2 estimated-cost-header">
+                          {{ section.next_section.title }}
+                        </h3>
+                        <p class="mb-0">
+                          {{ section.next_section.description }}
+                        </p>
+                      </div>
+                      {% if section.next_section.description_benefits %}
+                      <div class="row mb-1-9">
+                        <div
+                          class="col-xl-6 order-2 order-xl-1 wow fadeInUp"
+                          data-wow-delay="200ms"
+                        >
+                          <ul class="list-unstyled mb-0">
+                              {% for benefit in section.next_section.description_benefits %}
+                            <li class="d-flex align-items-center display-29 mb-3">
+                              <i
+                                class="ti-check text-secondary pe-3 font-weight-800 pt-2"
+                              ></i
+                              >{{ benefit|safe }}
+                            </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      </div>
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                {% elif section.is_estimated_cost and section.is_benefits_prev %}
+                  {# Skip Estimated Cost if it was already included with Benefits #}
+                {% else %}
+                  <div class="p-1-6 p-sm-1-9 primary-shadow">
+                    <div class="mb-1-9 wow fadeInUp" data-wow-delay="200ms">
+                      <h3 class="h2">
+                        {{ section.title }}
+                      </h3>
+                      <p class="mb-0">
+                        {{ section.description }}
+                      </p>
+                    </div>
+                    {% if section.description_benefits %}
+                    <div class="row mb-1-9">
+                      <div
+                        class="col-xl-6 order-2 order-xl-1 wow fadeInUp"
+                        data-wow-delay="200ms"
+                      >
+                        <ul class="list-unstyled mb-0">
+                            {% for benefit in section.description_benefits %}
+                          <li class="d-flex align-items-center display-29 mb-3">
+                            <i
+                              class="ti-check text-secondary pe-3 font-weight-800 pt-2"
+                            ></i
+                            >{{ benefit|safe }}
+                          </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            <a  href="{{ config.checklist_cta.cta_link }}" class="butn md mt-3 d-none" download><span>Download Checklist</span></a>
+
+            <!-- Apply Now Button -->
+            <div class="text-left mt-4 mb-4">
+              <a href="{% url 'contact' %}" class="butn md primary">
+                <span>Apply Now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mt-2-9">
+        <div class="sidebar ps-xl-4">
+          <div class="widget wow fadeInUp" data-wow-delay="200ms">
+            <div class="widget-content">
+
+              <ul class="category-list list-unstyled mb-0">
+                {% for country in visa_countries %}
+                <li class="cat-item cat-item-2 {% if country.slug == slug %} active {% endif %}">
+                  <a  style="display: flex; justify-content: space-between;" href="{% url 'visa_detail_page' slug=country.slug %}"
+                    ><span class="cat-name">{{country.name}}</span>
+                    <span style="width: 30px; height: 30px; display: inline-block"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path style="fill:#232326" d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z" data-name="Right"/></svg></span></a
+                  >
+                </li>
+               {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Request Checklist Card -->
+          <div class="widget wow fadeInUp mt-2-9" data-wow-delay="300ms">
+            <div class="widget-content">
+              <div class="p-1-6 p-sm-1-9 primary-shadow rounded">
+                <h4 class="h5 mb-3">Request Checklist</h4>
+                <p class="mb-3 small">Enter your email to receive the document checklist for {{ config.heading }}.</p>
+                <form id="checklist-request-form" method="post" action="#">
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="checklist-email"
+                      name="email"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                  <button type="submit" class="butn md primary w-100">
+                    <span>Request Checklist</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock content%}

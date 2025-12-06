@@ -1,0 +1,43 @@
+main_banner:
+  title: Tourist in New Zealand
+  image: https://www.abglobalconsultant.com/wp-content/uploads/2025/06/new-zealand-banner.webp
+heading: New Zealand Tourist Visa
+description: "A New Zealand Tourist Visa lets you experience stunning landscapes, from the dramatic fjords of Milford Sound to the geothermal wonders of Rotorua and the adventure capital Queenstown. Most visitors need either a Visitor Visa or an NZeTA (New Zealand Electronic Travel Authority) depending on nationality. Applicants typically need a valid passport, proof of funds, return travel plans, and travel insurance. After approval, explore New Zealand's pristine nature, Maori culture, and world-class outdoor activities."
+images:
+  - https://images.unsplash.com/photo-1507699622108-4be3abd695ad?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/milford-sound-new-zealand.webp
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/queenstown-new-zealand.webp
+sections:
+  - title: Tourist Cities in New Zealand
+    description: Auckland combines urban life with harbors and nearby islands. Wellington offers a vibrant arts scene and waterfront dining. Queenstown is the adventure capital with bungee jumping and skiing. Christchurch showcases post-earthquake regeneration, while Rotorua features geothermal pools and Maori culture. Dunedin charms with Scottish heritage, and the Bay of Islands provides stunning coastal beauty.
+
+  - title: Benefits
+    description: Visiting New Zealand on a tourist visa offers unparalleled natural beauty, adventure activities, and friendly locals in a compact, easy-to-explore country.
+    description_benefits:
+      - "Iconic landscapes: Milford Sound, Fiordland, Tongariro National Park, and pristine beaches"
+      - "Adventure activities: bungee jumping, skydiving, hiking, and water sports"
+      - "Maori culture: Rotorua cultural experiences, traditional performances, and heritage sites"
+      - "Efficient domestic flights and scenic road trips (Great Coast Road)"
+      - "Year-round travel: summer beaches, winter skiing, spring blooms, and autumn colors"
+      - "<strong>Only country where visa could be convert to work visa from visit visa</strong>"
+
+  - title: Estimated Cost
+    description: Breakdown of costs for your New Zealand tourist visa application.
+    description_benefits:
+      - "Visitor visa application fee: £190"
+      - "Includes International Visitor Conservation and Tourism Levy (IVL): £43"
+      - "Our service fee: £150"
+      - "Total cost: £383"
+
+checklist_cta:
+  cta_title: Download Checklist
+  cta_link: https://www.abglobalconsultant.com/wp-content/uploads/2024/10/checklist.pdf
+expenses_sections:
+  title: New Zealand Expenses
+  expenses:
+    - Visa/NZeTA application fee (varies by nationality) (approx £7–£150)
+    - Optional passport courier/collection (£20–£35)
+    - Travel insurance (recommended) (~£10–£25 for short trips)
+    - Bank statement (recommended balance £1500+)
+    - Return ticket estimate (£600–£1200+, varies by season)
+    - Hotel/Accommodation reservation (refundable or pay-on-arrival)

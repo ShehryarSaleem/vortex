@@ -1,0 +1,11 @@
+[project]
+name = "vortex-ease"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django>=5.2.9",
+    "pydantic>=2.12.5",
+    "pyyaml>=6.0.3",
+]

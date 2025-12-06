@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  FAQ
+{% endblock title %}
+
+{% block content%}
+<section
+  class="page-title-section bg-img cover-background"
+  data-overlay-dark="0"
+  data-background="{% static 'img/bg/page-title.png' %}"
+>
+  <div class="container">
+    <div class="title-info">
+      <h1 class="display-18 display-md-14 display-xl-12">Frequently Asked Questions</h1>
+    </div>
+    <div class="breadcrumbs-info">
+      <ul class="ps-0">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row mt-n2-9">
+      <div class="col-lg-10 mx-auto mt-2-9">
+        <div class="p-1-6 p-sm-1-9 primary-shadow">
+          <div class="mb-1-9 wow fadeInUp" data-wow-delay="200ms">
+            <h2 class="h2 mb-4 text-center">Common Questions</h2>
+
+            <div class="accordion" id="faqAccordion">
+              <!-- FAQ Item 1 -->
+              <div class="accordion-item mb-3">
+                <h3 class="accordion-header" id="faq1">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                    What documents do I need for a tourist visa application?
+                  </button>
+                </h3>
+                <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Typically, you'll need a valid passport, completed visa application form, passport-sized photographs, proof of accommodation, travel itinerary, bank statements showing sufficient funds, travel insurance, and return flight tickets. Requirements may vary by destination.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 2 -->
+              <div class="accordion-item mb-3">
+                <h3 class="accordion-header" id="faq2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                    How long does the visa application process take?
+                  </button>
+                </h3>
+                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Processing times vary depending on the destination and type of visa. Tourist visas typically take 2-4 weeks, while student and work visas may take longer. We recommend applying well in advance of your planned travel date.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 3 -->
+              <div class="accordion-item mb-3">
+                <h3 class="accordion-header" id="faq3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                    Do you guarantee visa approval?
+                  </button>
+                </h3>
+                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    While we cannot guarantee visa approval as decisions are made by the respective embassies or consulates, we ensure your application is complete, accurate, and properly prepared to maximize your chances of success. Our expertise significantly improves approval rates.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 4 -->
+              <div class="accordion-item mb-3">
+                <h3 class="accordion-header" id="faq4">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                    What countries do you provide visa services for?
+                  </button>
+                </h3>
+                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    We provide visa services for multiple destinations including Schengen countries (Austria, France, Germany, Greece, Italy, Netherlands, Spain, Switzerland), USA, Canada, Australia, and New Zealand. We can assist with tourist, student, business, and other visa types for these destinations.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 5 -->
+              <div class="accordion-item mb-3">
+                <h3 class="accordion-header" id="faq5">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                    How much do your services cost?
+                  </button>
+                </h3>
+                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Our service fees vary depending on the type of visa and destination. In addition to our service fee, you'll need to pay the embassy/consulate visa fee, which varies by country. We provide transparent pricing with no hidden costs. Contact us for a detailed quote based on your specific requirements.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 6 -->
+              <div class="accordion-item mb-3">
+                <h3 class="accordion-header" id="faq6">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                    Can I convert a tourist visa to a work visa?
+                  </button>
+                </h3>
+                <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    This depends on the destination country. New Zealand is one of the few countries that allows conversion from a tourist visa to a work visa under certain conditions. Most other countries require you to return to your home country and apply for a work visa from there. We can advise you on the specific requirements for your destination.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 7 -->
+              <div class="accordion-item mb-3">
+                <h3 class="accordion-header" id="faq7">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                    What if my visa application is rejected?
+                  </button>
+                </h3>
+                <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="faq7" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    If your visa is rejected, we can help you understand the reasons for rejection and guide you on how to address them. In many cases, you can reapply after addressing the issues. We'll review your application and provide recommendations for a stronger reapplication.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 8 -->
+              <div class="accordion-item mb-3">
+                <h3 class="accordion-header" id="faq8">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                    Do I need travel insurance for my visa application?
+                  </button>
+                </h3>
+                <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="faq8" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Travel insurance is mandatory for Schengen visa applications and highly recommended for most other destinations. It provides coverage for medical emergencies, trip cancellations, and other unforeseen circumstances. We can help you obtain appropriate travel insurance that meets visa requirements.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <p class="mb-3">Still have questions? We're here to help!</p>
+          <a href="{% url 'contact' %}" class="butn md">
+            <span>Contact Us</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content%}

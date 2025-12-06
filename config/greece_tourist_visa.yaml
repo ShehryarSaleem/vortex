@@ -1,0 +1,44 @@
+main_banner:
+  title: Tourist in Greece
+  image: https://www.abglobalconsultant.com/wp-content/uploads/2025/06/greece-santorini-caldera-sunset.webp
+heading: Greece Tourist Visa
+description: A Greece Tourist Visa invites you to explore ancient history, island sunsets, and Mediterranean cuisine—from the Acropolis in Athens to the whitewashed villages of the Cyclades. As part of the Schengen Area, this short-stay visa generally allows visits up to 90 days within a 180-day period for tourism and leisure. Applicants typically need a valid passport, accommodation details, return travel, travel insurance, and proof of funds. After your appointment, discover Greece’s archaeological sites, beaches, and island-hopping routes.
+images:
+  - https://plus.unsplash.com/premium_photo-1661964149725-fbf14eabd38c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/mykonos-windmills-greece.webp
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/crete-balos-lagoon-greece.webp
+sections:
+  - title: Tourist Cities in Greece
+    description: Athens blends classical landmarks with lively neighborhoods. Thessaloniki offers waterfront promenades and Byzantine heritage. Crete features beaches and Minoan history, while Santorini and Mykonos dazzle with Cycladic scenery. Rhodes, Corfu, and Naxos add variety for island-hopping adventures.
+
+  - title: Benefits
+    description: Visiting Greece on a tourist visa delivers a mix of antiquity, islands, and seaside relaxation with ferry and flight links.
+    description_benefits:
+      - Travel across the Schengen Area for up to 90 days in 180 days
+      - "Ancient sites: Acropolis, Delphi, Knossos, Meteora monasteries"
+      - "Island escapes: Santorini sunsets, Mykonos nightlife, Crete's beaches"
+      - Easy connections via ferries and domestic flights between islands
+      - "Seasonal highlights: shoulder-season bargains and summer festivals"
+
+  - title: Estimated Cost
+    description: Breakdown of costs for your Greece tourist visa application.
+    description_benefits:
+      - "Embassy appointment fee: £25–£30"
+      - "Travel insurance: Approximately £15"
+      - "Embassy visa fee: Around £70"
+      - "Flights: £40–£50 (varies by time and destination)"
+      - "Our service fee: £125 (discount available for referrals)"
+      - "Processing time: Approximately 2 weeks after the appointment"
+checklist_cta:
+  cta_title: Download Checklist
+  cta_link: https://www.abglobalconsultant.com/wp-content/uploads/2024/10/checklist.pdf
+expenses_sections:
+  title: Greece Expenses
+  expenses:
+    - Appointment fee (VFS, if applicable) (£25–£35)
+    - Embassy/Consulate visa fee (short-stay) (£70–£80)
+    - Optional passport courier/collection (£20–£35)
+    - Travel insurance (Schengen-compliant) (~£10–£20 for short trips)
+    - Bank statement (recommended balance £1200+; prefer £1500+)
+    - Return ticket estimate (£40–£120, varies by dates)
+    - Hotel/Accommodation reservation (pay-on-arrival or refundable booking)

@@ -1,0 +1,35 @@
+main_banner:
+  title: Tourist in Canada
+  image: https://www.abglobalconsultant.com/wp-content/uploads/2025/06/canada-banff-lake-louise-rocky-mountains.webp
+heading: Canada Tourist Visa
+description: A Canada Tourist Visa (Visitor Visa) lets you experience breathtaking national parks, multicultural cities, and scenic coastlines—from the Rockies and Niagara Falls to Vancouver, Toronto, and Montreal. Most visitors need either a Visitor Visa (TRV) or an eTA, depending on nationality. Applicants typically require a valid passport, proof of funds and ties to home country, travel plan, and sometimes biometrics. After approval, you can enjoy Canada’s nature, culture, and welcoming cities.
+images:
+  - https://images.unsplash.com/photo-1519832979-6fa011b87667?q=80&w=1753&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/old-quebec-city-canada.webp
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/niagara-falls-canada.webp
+sections:
+  - title: Tourist Cities in Canada
+    description: Toronto offers a dynamic skyline, museums, and diverse neighborhoods. Vancouver blends ocean and mountains with great dining and outdoor access. Montreal charms with festivals and a European vibe, while Quebec City showcases Old World architecture. Calgary and Banff open the Rockies, and the Maritimes offer coastal villages and lighthouses.
+
+  - title: Benefits
+    description: Visiting Canada on a tourist visa delivers world-class nature, vibrant cities, and straightforward travel infrastructure.
+    description_benefits:
+      - "Explore iconic nature: Banff, Jasper, Niagara Falls, and national parks"
+      - Discover multicultural cities with festivals and culinary scenes
+      - Efficient domestic flights and scenic rail/road trips
+      - Family visits and tourism-friendly entry options (TRV or eTA as eligible)
+      - "Year-round activities: summer hiking, fall colors, winter sports"
+
+checklist_cta:
+  cta_title: Download Checklist
+  cta_link: https://www.abglobalconsultant.com/wp-content/uploads/2024/10/checklist.pdf
+expenses_sections:
+  title: Canada Expenses
+  expenses:
+    - Visa/eTA application fee (varies by nationality) (approx £5–£75)
+    - Biometrics fee (if applicable) (£50–£60)
+    - Optional passport courier/collection (£20–£35)
+    - Travel insurance (recommended) (~£10–£25 for short trips)
+    - Bank statement (recommended balance £1500+)
+    - Return ticket estimate (£300–£800+, varies by season)
+    - Hotel/Accommodation reservation (refundable or pay-on-arrival)

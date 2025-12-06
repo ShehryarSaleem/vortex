@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Blogs
+{% endblock title %}
+
+{% block content%}
+<section
+  class="page-title-section bg-img cover-background"
+  data-overlay-dark="0"
+  data-background="{% static 'img/bg/page-title.png' %}"
+>
+  <div class="container">
+    <div class="title-info">
+      <h1 class="display-18 display-md-14 display-xl-12">Blogs</h1>
+    </div>
+    <div class="breadcrumbs-info">
+      <ul class="ps-0">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'blogs' %}">Blogs</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row mt-n2-9">
+      <div class="col-lg-12 mt-2-9">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="h3 mb-0">All Blog Posts</h2>
+          <div class="view-toggle">
+            <button class="butn sm primary active" id="card-view-btn" onclick="switchView('card')">
+              <span><i class="fas fa-th"></i> Cards</span>
+            </button>
+            <button class="butn sm primary" id="list-view-btn" onclick="switchView('list')">
+              <span><i class="fas fa-list"></i> List</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card View -->
+    <div class="row mt-n2-9" id="card-view">
+      {% for blog in blog_pages %}
+      <div class="col-md-6 col-lg-4 mt-2-9">
+        <article class="card card-style03 border-color-light-black h-100">
+          <div class="card-img position-relative overflow-hidden rounded-top bg-dark">
+            <img src="{{ blog.image }}" alt="{{ blog.title }}" style="width: 100%; height: 250px; object-fit: cover;" />
+          </div>
+          <div class="card-body p-1-6 p-sm-1-9 position-relative">
+            <h3 class="h4 mb-3">
+              <a href="{{ blog.url }}">{{ blog.title }}</a>
+            </h3>
+            <p class="mb-3">
+              {{ blog.description }}
+            </p>
+            <a href="{{ blog.url }}" class="read-more">
+              <span>Read More</span>
+            </a>
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- List View -->
+    <div class="row mt-n2-9 d-none" id="list-view">
+      <div class="col-lg-12">
+        {% for blog in blog_pages %}
+        <div class="card card-style03 border-color-light-black mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <div class="card-img position-relative overflow-hidden rounded-start bg-dark" style="height: 100%; min-height: 200px;">
+                <img src="{{ blog.image }}" alt="{{ blog.title }}" style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-1-6 p-sm-1-9">
+                <h3 class="h4 mb-3">
+                  <a href="{{ blog.url }}">{{ blog.title }}</a>
+                </h3>
+                <p class="mb-3">
+                  {{ blog.description }}
+                </p>
+                <a href="{{ blog.url }}" class="read-more">
+                  <span>Read More</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .view-toggle {
+    display: flex !important;
+    gap: 10px;
+  }
+  .view-toggle .butn {
+    margin: 0 !important;
+    min-width: 100px;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .view-toggle .butn.active {
+    background-color: #e02454 !important;
+    color: white !important;
+    border-color: #e02454 !important;
+  }
+  .view-toggle .butn.active:hover {
+    background-color: #c01e47 !important;
+    border-color: #c01e47 !important;
+  }
+  .view-toggle .butn:not(.active) {
+    background-color: transparent !important;
+    color: #e02454 !important;
+    border-color: #e02454 !important;
+  }
+  .view-toggle .butn:not(.active):hover {
+    background-color: #e02454 !important;
+    color: white !important;
+  }
+  #list-view {
+    margin-top: 5% !important;
+  }
+  #list-view .card-img {
+    border-radius: 0.25rem 0 0 0.25rem;
+  }
+</style>
+
+<script>
+  function switchView(view) {
+    const cardView = document.getElementById('card-view');
+    const listView = document.getElementById('list-view');
+    const cardBtn = document.getElementById('card-view-btn');
+    const listBtn = document.getElementById('list-view-btn');
+
+    if (view = == 'card') {
+      cardView.classList.remove('d-none');
+      listView.classList.add('d-none');
+      cardBtn.classList.add('active');
+      listBtn.classList.remove('active');
+    } else {
+      cardView.classList.add('d-none');
+      listView.classList.remove('d-none');
+      cardBtn.classList.remove('active');
+      listBtn.classList.add('active');
+    }
+  }
+</script>
+{% endblock content%}

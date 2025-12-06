@@ -1,0 +1,40 @@
+main_banner:
+  title: Tourist in the USA
+  image: https://www.abglobalconsultant.com/wp-content/uploads/2025/06/usa-new-york-statue-of-liberty-manhattan.webp
+heading: USA Tourist Visa
+description: A USA Tourist Visa (B-1/B-2) allows you to explore diverse cities, national parks, and cultural landmarks—from New York and Washington, D.C. to the Grand Canyon, California’s coast, and Florida’s beaches. Most applicants need a valid passport, DS-160 form, visa fee payment, appointment scheduling, and an in-person interview. Proof of ties to home country and financial means is typically required. After approval, you can enjoy America’s road trips, museums, and entertainment.
+images:
+  - https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/grand-canyon-national-park-usa.webp
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/golden-gate-bridge-san-francisco-usa.webp
+sections:
+  - title: Tourist Cities in USA
+    description: New York City offers skyline views, Broadway, and world-class museums. Washington, D.C. showcases monuments and the Smithsonian. Los Angeles features Hollywood and beaches; San Francisco blends bay views with iconic bridges. Chicago’s architecture, Miami’s art and beaches, and national parks like Yellowstone and Yosemite round out itineraries.
+
+  - title: Benefits
+    description: Visiting the United States on a tourist visa offers vast variety—urban culture, national parks, and road trips supported by robust transport and services.
+    description_benefits:
+      - Explore world-famous cities, museums, and entertainment districts
+      - Visit national parks and scenic drives (Route 66, Pacific Coast Highway)
+      - Diverse climates and experiences across regions year-round
+      - Extensive domestic flights and highways for multi-city trips
+      - Family visits, events, and tourism-focused itineraries
+
+  - title: Estimated Cost
+    description: Breakdown of costs for your USA tourist visa application.
+    description_benefits:
+      - "Total cost: £300"
+      - "Our service fee: £150"
+      - "Embassy appointment fee: £150"
+checklist_cta:
+  cta_title: Download Checklist
+  cta_link: https://www.abglobalconsultant.com/wp-content/uploads/2024/10/checklist.pdf
+expenses_sections:
+  title: USA Expenses
+  expenses:
+    - Visa application fee (B1/B2) (approx £140–£160 equivalent)
+    - Optional courier/return of passport (£20–£35)
+    - Travel insurance (recommended) (~£10–£25 for short trips)
+    - Bank statement (recommended balance £1500+)
+    - Return ticket estimate (£400–£1000+, varies by season)
+    - Hotel/Accommodation reservation (refundable or pay-on-arrival)

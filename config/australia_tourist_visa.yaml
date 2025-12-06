@@ -1,0 +1,42 @@
+main_banner:
+  title: Tourist in Australia
+  image: https://www.abglobalconsultant.com/wp-content/uploads/2025/06/australia-sydney-opera-house-harbour-bridge.webp
+heading: Australia Tourist Visa
+description: An Australia Tourist Visa lets you experience sun-soaked beaches, unique wildlife, and vibrant cities—from Sydney’s harbour to the Great Barrier Reef and the Outback. Most short-term visitors apply for Visitor visa (subclass 600) or eVisitor/ETA depending on nationality. Applicants generally need a valid passport, proof of funds, travel plans, and sometimes health/character checks. After approval, explore Australia’s coastlines, national parks, and dynamic urban culture.
+images:
+  - https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=3030&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/melbourne-skyline-australia.webp
+  - https://www.abglobalconsultant.com/wp-content/uploads/2025/06/uluru-outback-australia.webp
+sections:
+  - title: Tourist Cities in Australia
+    description: Sydney shines with the Opera House and beaches. Melbourne offers laneway cafés, arts, and sport. Brisbane and the Gold Coast deliver sunshine and surf, while Cairns opens access to the Great Barrier Reef. Perth and Adelaide combine coastal living with wine regions; Tasmania offers wild landscapes.
+
+  - title: Benefits
+    description: Visiting Australia on a tourist visa blends outdoor adventure with cosmopolitan cities and modern transport.
+    description_benefits:
+      - "Iconic nature: Great Barrier Reef, Uluru, national parks, and wildlife"
+      - World-class beaches and coastal road trips (Great Ocean Road)
+      - Vibrant cities with festivals, dining, and multicultural neighborhoods
+      - Domestic flight network for long distances; reliable urban transport
+      - Year-round travel with varied climates across regions
+
+  - title: Estimated Cost
+    description: Breakdown of costs for your Australia tourist visa application.
+    description_benefits:
+      - "Total cost: £245"
+      - "Our service fee: £150"
+      - "Embassy fee: £95"
+
+checklist_cta:
+  cta_title: Download Checklist
+  cta_link: https://www.abglobalconsultant.com/wp-content/uploads/2024/10/checklist.pdf
+expenses_sections:
+  title: Australia Expenses
+  expenses:
+    - Visa/ETA application fee (varies by stream) (approx £10–£120)
+    - Optional biometrics/health checks (if requested) (variable)
+    - Optional passport courier/collection (£20–£35)
+    - Travel insurance (recommended) (~£10–£25 for short trips)
+    - Bank statement (recommended balance £1500+)
+    - Return ticket estimate (£500–£1200+, varies by season)
+    - Hotel/Accommodation reservation (refundable or pay-on-arrival)

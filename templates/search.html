@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Search Results
+{% endblock title %}
+
+{% block content%}
+<section
+  class="page-title-section bg-img cover-background"
+  data-overlay-dark="0"
+  data-background="{% static 'img/bg/page-title.png' %}"
+>
+  <div class="container">
+    <div class="title-info">
+      <h1 class="display-18 display-md-14 display-xl-12">Search Results</h1>
+    </div>
+    <div class="breadcrumbs-info">
+      <ul class="ps-0">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="#">Search</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row mt-n2-9">
+      <div class="col-lg-10 mx-auto mt-2-9">
+        <div class="p-1-6 p-sm-1-9 primary-shadow">
+          <div class="mb-1-9 wow fadeInUp" data-wow-delay="200ms">
+            <h2 class="h2 mb-3">Search Results for: "{{ query }}"</h2>
+            {% if results %}
+            <div class="search-results">
+              {% for result in results %}
+              <div class="search-result-item mb-4 pb-4 border-bottom">
+                <h4 class="h5 mb-2">
+                  <a href="{{ result.url }}" class="text-primary">{{ result.title }}</a>
+                </h4>
+                <p class="mb-0 text-muted">{{ result.description }}</p>
+              </div>
+              {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center py-5">
+              <p class="mb-3">No results found for "{{ query }}".</p>
+              <p class="mb-4">Try searching with different keywords or browse our services.</p>
+              <a href="{% url 'services' %}" class="butn md">
+                <span>View Our Services</span>
+              </a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content%}

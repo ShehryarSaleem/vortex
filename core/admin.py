@@ -1340,6 +1340,7 @@ class InvoiceAdmin(ModelAdmin):
     Admin interface for Invoice model using Django Unfold.
     """
 
+    change_list_template = "admin/core/invoice/change_list.html"
     form = InvoiceForm
 
     # List Display
@@ -1402,7 +1403,6 @@ class InvoiceAdmin(ModelAdmin):
             "Financial Information",
             {
                 "fields": (
-                    "visa_applications_section",
                     ("subtotal", "currency"),
                     "discount",
                     ("tax_rate", "tax_amount"),
@@ -1441,7 +1441,7 @@ class InvoiceAdmin(ModelAdmin):
     )
 
     # Readonly Fields
-    readonly_fields = ["created_at", "updated_at", "tax_amount", "total_amount", "subtotal", "visa_applications_section"]
+    readonly_fields = ["created_at", "updated_at", "tax_amount", "total_amount", "subtotal"]
 
     # Filter Horizontal removed - using custom UI with through model
     # filter_horizontal = ["visa_applications"]
@@ -1562,6 +1562,16 @@ class InvoiceAdmin(ModelAdmin):
         custom_urls = [
             # String-based endpoints (must come first)
             path(
+                "builder/",
+                self.admin_site.admin_view(self.builder_view),
+                name="core_invoice_builder",
+            ),
+            path(
+                "<int:invoice_id>/builder/",
+                self.admin_site.admin_view(self.builder_view),
+                name="core_invoice_builder_edit",
+            ),
+            path(
                 "available-applications/",
                 self.admin_site.admin_view(self.get_available_applications),
                 name="core_invoice_get_available_applications",
@@ -1605,6 +1615,182 @@ class InvoiceAdmin(ModelAdmin):
             ),
         ]
         return custom_urls + urls
+
+    def builder_view(self, request, invoice_id=None):
+        """Standalone invoice builder page to keep UI simple."""
+        from django.contrib import messages
+        from django.utils import timezone
+        from datetime import datetime
+
+        clients = Client.objects.all().order_by("first_name", "last_name")
+
+        selected_client_id = request.POST.get("client") or request.GET.get("client")
+        selected_app_ids = request.POST.getlist("visa_applications") if request.method == "POST" else []
+        tax_rate_value = request.POST.get("tax_rate", "0")
+        due_date_value = request.POST.get("due_date", "")
+        notes_value = request.POST.get("notes", "")
+        items_payload = request.POST.get("items_json", "[]")
+        status_value = request.POST.get("status", "draft")
+        errors = []
+        items_data = []
+        invoice_obj = None
+        status_choices = [choice[0] for choice in Invoice.INVOICE_STATUS_CHOICES]
+
+        # If editing, load current invoice and prefill defaults
+        if invoice_id:
+            try:
+                invoice_obj = Invoice.objects.get(pk=invoice_id)
+                if request.method != "POST":
+                    selected_client_id = str(invoice_obj.client.pk)
+                    tax_rate_value = str(invoice_obj.tax_rate)
+                    due_date_value = invoice_obj.due_date.isoformat() if invoice_obj.due_date else ""
+                    notes_value = invoice_obj.notes or ""
+                    status_value = invoice_obj.status
+
+                    # Build items payload from existing applications
+                    import json
+                    items_list = []
+                    applications = list(invoice_obj.invoice_applications.select_related("visa_application"))
+                    discount_total = invoice_obj.discount or Decimal("0")
+                    discount_share = (discount_total / len(applications)) if applications else Decimal("0")
+                    for ia in applications:
+                        app = ia.visa_application
+                        items_list.append({
+                            "id": app.pk,
+                            "name": f"{app.get_visa_type_display()} - {app.get_stage_display()}",
+                            "price": float(ia.unit_price),
+                            "currency": invoice_obj.currency or "GBP",
+                            "discount": float(discount_share) if discount_share else 0,
+                        })
+                    items_payload = json.dumps(items_list)
+            except Invoice.DoesNotExist:
+                errors.append("Invoice not found for editing.")
+                invoice_obj = None
+
+        if request.method == "POST":
+            client = None
+            try:
+                client = Client.objects.get(pk=selected_client_id)
+            except Client.DoesNotExist:
+                errors.append("Selected client was not found.")
+
+            if items_payload:
+                try:
+                    import json
+                    items_data = json.loads(items_payload)
+                except Exception:
+                    errors.append("Could not read invoice items. Please add them again.")
+            else:
+                errors.append("Add at least one visa application item.")
+
+            try:
+                tax_rate_decimal = Decimal(tax_rate_value or "0")
+            except Exception:
+                tax_rate_decimal = Decimal("0")
+                errors.append("Invalid tax rate.")
+
+            if status_value not in status_choices:
+                status_value = "draft"
+
+            # Parse due date
+            due_date = None
+            if due_date_value:
+                try:
+                    due_date = datetime.strptime(due_date_value, "%Y-%m-%d").date()
+                except ValueError:
+                    errors.append("Invalid due date format. Use YYYY-MM-DD.")
+
+            if not errors and client:
+                is_edit = invoice_obj is not None
+                if is_edit:
+                    invoice = invoice_obj
+                    invoice.client = client
+                    invoice.due_date = due_date
+                    invoice.tax_rate = tax_rate_decimal
+                    invoice.notes = notes_value
+                    invoice.status = status_value
+                else:
+                    invoice = Invoice.objects.create(
+                        client=client,
+                        invoice_date=timezone.now().date(),
+                        due_date=due_date,
+                        tax_rate=tax_rate_decimal,
+                        status=status_value or "draft",
+                        notes=notes_value,
+                    )
+
+                detected_currency = None
+                created_items = 0
+                discount_total = Decimal("0.00")
+
+                # Clear existing items when editing
+                if is_edit:
+                    InvoiceApplication.objects.filter(invoice=invoice).delete()
+
+                # Attach applications and store prices
+                for item in items_data:
+                    app_id = item.get("id")
+                    item_discount = item.get("discount", 0)
+                    try:
+                        item_discount = Decimal(str(item_discount or "0"))
+                        if item_discount < 0:
+                            item_discount = Decimal("0")
+                    except Exception:
+                        item_discount = Decimal("0")
+
+                    try:
+                        visa_app = VisaApplication.objects.get(pk=app_id, client=client)
+                    except VisaApplication.DoesNotExist:
+                        errors.append(f"Visa application {app_id} not found for this client.")
+                        continue
+
+                    price = Pricing.get_price_for_visa_type(visa_app.visa_type)
+                    if item_discount > price:
+                        item_discount = price
+                    discount_total += item_discount
+                    InvoiceApplication.objects.create(
+                        invoice=invoice,
+                        visa_application=visa_app,
+                        unit_price=price,
+                    )
+                    created_items += 1
+                    # If pricing carries currency, remember it
+                    try:
+                        pricing = Pricing.objects.get(visa_type=visa_app.visa_type, is_active=True)
+                        detected_currency = detected_currency or pricing.currency
+                    except Pricing.DoesNotExist:
+                        pass
+
+                if errors or created_items == 0:
+                    if not is_edit:
+                        invoice.delete()
+                else:
+                    invoice.discount = discount_total
+                    if detected_currency and invoice.currency != detected_currency:
+                        invoice.currency = detected_currency
+
+                    invoice.calculate_totals()
+                    if is_edit:
+                        messages.success(request, f"Invoice {invoice.invoice_number} updated successfully.")
+                    else:
+                        messages.success(request, f"Invoice {invoice.invoice_number} created successfully.")
+                    return redirect("admin:core_invoice_builder_edit", invoice.pk)
+
+        context = {
+            **self.admin_site.each_context(request),
+            "title": "Create Invoice" if not invoice_obj else f"Edit Invoice {invoice_obj.invoice_number}",
+            "clients": clients,
+            "selected_client_id": selected_client_id,
+            "preselected_app_ids": selected_app_ids,
+            "tax_rate_value": tax_rate_value,
+            "due_date_value": due_date_value,
+            "notes_value": notes_value,
+            "items_payload": items_payload or "[]",
+            "errors": errors,
+            "invoice_obj": invoice_obj,
+            "status_choices": Invoice.INVOICE_STATUS_CHOICES,
+        }
+        return render(request, "admin/core/invoice/builder.html", context)
 
     def redirect_to_available_applications(self, request):
         """Redirect old endpoint name to new endpoint for backward compatibility."""
@@ -2008,52 +2194,27 @@ class InvoiceAdmin(ModelAdmin):
         return form
 
     def add_view(self, request, form_url="", extra_context=None):
-        """Override add_view to add custom context."""
-        extra_context = extra_context or {}
-        import json
-        self._selected_applications_json = json.dumps([])
-        extra_context['selected_applications'] = json.dumps([])
-        return super().add_view(request, form_url, extra_context)
+        """Redirect to builder for add flow."""
+        from urllib.parse import urlencode
+        params = request.GET.urlencode()
+        url = reverse("admin:core_invoice_builder")
+        if params:
+            url = f"{url}?{params}"
+        return redirect(url)
 
     def change_view(self, request, object_id, form_url="", extra_context=None):
-        """Override change_view to add custom context."""
-        extra_context = extra_context or {}
-        import json
+        """Redirect edit flow to builder."""
+        from urllib.parse import urlencode
+        params = request.GET.urlencode()
+        try:
+            int(object_id)
+        except (ValueError, TypeError):
+            return super().change_view(request, object_id, form_url, extra_context)
 
-        # Validate object_id is a valid integer (prevents routing errors from custom URLs)
-        if object_id:
-            try:
-                # Try to convert to int - if it fails, it's not a valid invoice ID
-                int(object_id)
-            except (ValueError, TypeError):
-                # Invalid object_id - likely a custom URL that was misrouted
-                # Let Django handle it (will return 404)
-                return super().change_view(request, object_id, form_url, extra_context)
-
-        # Load selected applications for edit mode
-        if object_id:
-            try:
-                invoice = Invoice.objects.get(pk=object_id)
-                selected_apps = []
-                currency = invoice.currency or 'GBP'
-                for ia in invoice.invoice_applications.all():
-                    selected_apps.append({
-                        'id': ia.visa_application.pk,
-                        'name': f"{ia.visa_application.get_visa_type_display()} - {ia.visa_application.get_stage_display()}",
-                        'display': f"{ia.visa_application.get_visa_type_display()} - {ia.visa_application.get_stage_display()}",
-                        'price': f"{float(ia.unit_price):.2f}",
-                        'currency': currency
-                    })
-                # Store in instance variable for visa_applications_section
-                self._selected_applications_json = json.dumps(selected_apps)
-                extra_context['selected_applications'] = json.dumps(selected_apps)
-            except Invoice.DoesNotExist:
-                self._selected_applications_json = json.dumps([])
-                extra_context['selected_applications'] = json.dumps([])
-        else:
-            self._selected_applications_json = json.dumps([])
-
-        return super().change_view(request, object_id, form_url, extra_context)
+        url = reverse("admin:core_invoice_builder_edit", args=[object_id])
+        if params:
+            url = f"{url}?{params}"
+        return redirect(url)
 
     class Media:
         js = (

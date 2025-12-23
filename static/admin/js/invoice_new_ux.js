@@ -22,6 +22,26 @@
         return;
     }
 
+    function getSelectedApplicationsTotal() {
+        var total = 0;
+        $.each(selectedApplications, function(index, app) {
+            total += parseFloat(app.price) || 0;
+        });
+        return total;
+    }
+
+    function getDiscountValue() {
+        var discountField = $('#id_discount');
+        var discountVal = 0;
+        if (discountField.length) {
+            var parsed = parseFloat(discountField.val());
+            if (!isNaN(parsed)) {
+                discountVal = parsed;
+            }
+        }
+        return discountVal;
+    }
+
     // Get CSRF token
     function getCSRFToken() {
         return $('[name=csrfmiddlewaretoken]').val() ||
@@ -368,8 +388,25 @@
     // Update subtotal
     function updateSubtotal(amount) {
         var total = parseFloat(amount) || 0;
+        var discountVal = getDiscountValue();
+        var totalAfterDiscount = total - discountVal;
+        if (totalAfterDiscount < 0) {
+            totalAfterDiscount = 0;
+        }
+        var taxRateField = $('#id_tax_rate');
+        var taxRate = 0;
+        if (taxRateField.length) {
+            var parsedTax = parseFloat(taxRateField.val());
+            if (!isNaN(parsedTax)) {
+                taxRate = parsedTax;
+            }
+        }
+        var taxAmount = (totalAfterDiscount * taxRate) / 100;
+        var totalWithTax = totalAfterDiscount + taxAmount;
 
-        $('#subtotal-display').text(total.toFixed(2));
+        $('#items-subtotal-display').text(total.toFixed(2));
+        $('#discount-display').text(discountVal.toFixed(2));
+        $('#subtotal-display').text(totalAfterDiscount.toFixed(2));
 
         var subtotalField = $('#id_subtotal');
         if (subtotalField.length) {
@@ -378,6 +415,26 @@
             subtotalField.val(total.toFixed(2));
             if (wasReadonly) {
                 subtotalField.prop('readonly', true);
+            }
+        }
+
+        var taxAmountField = $('#id_tax_amount');
+        if (taxAmountField.length) {
+            var taxReadonly = taxAmountField.prop('readonly');
+            taxAmountField.prop('readonly', false);
+            taxAmountField.val(taxAmount.toFixed(2));
+            if (taxReadonly) {
+                taxAmountField.prop('readonly', true);
+            }
+        }
+
+        var totalField = $('#id_total_amount');
+        if (totalField.length) {
+            var totalReadonly = totalField.prop('readonly');
+            totalField.prop('readonly', false);
+            totalField.val(totalWithTax.toFixed(2));
+            if (totalReadonly) {
+                totalField.prop('readonly', true);
             }
         }
 
@@ -767,6 +824,14 @@
         $(document).on('click', '.remove-btn', function() {
             var appId = $(this).data('app-id');
             removeApplication(appId);
+        });
+
+        // Recalculate when discount changes so admin sees totals immediately
+        $(document).on('input change', '#id_discount', function() {
+            updateSubtotal(getSelectedApplicationsTotal());
+        });
+        $(document).on('input change', '#id_tax_rate', function() {
+            updateSubtotal(getSelectedApplicationsTotal());
         });
 
         // Form submit handler

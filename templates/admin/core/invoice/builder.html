@@ -1,0 +1,476 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block title %}{% if invoice_obj %}Edit Invoice {{ invoice_obj.invoice_number }}{% else %}Create Invoice{% endif %} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block content %}
+<style>
+    /* Compact modern styling scoped to this page */
+    .invoice-shell {
+        background: linear-gradient(120deg, #f7f9fc 0%, #f2f6ff 100%);
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 22px;
+        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.07);
+    }
+    .panel {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 18px;
+        margin-bottom: 16px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+    .panel h2 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 18px;
+        margin-top: 0;
+        margin-bottom: 12px;
+        color: #0f172a;
+    }
+    .pill {
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #eef2ff;
+        color: #4338ca;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .field-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 14px;
+    }
+    .field-grid label {
+        font-weight: 600;
+        color: #0f172a;
+    }
+    .meta-text {
+        color: #6b7280;
+        font-size: 13px;
+    }
+    .items-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .item-row {
+        display: grid;
+        grid-template-columns: 1.2fr 0.7fr 0.3fr;
+        gap: 12px;
+        align-items: center;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 12px 14px;
+    }
+    .item-row h4 {
+        margin: 0 0 4px 0;
+        font-size: 15px;
+        color: #0f172a;
+    }
+    .item-row .subline {
+        color: #6b7280;
+        font-size: 13px;
+    }
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #ecfeff;
+        color: #0ea5e9;
+        font-weight: 600;
+        font-size: 12px;
+    }
+    .totals-block {
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 14px 16px;
+        background: #0f172a;
+        color: #e2e8f0;
+    }
+    .totals-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+    .totals-row strong {
+        color: #fff;
+    }
+    .primary-btn {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.08s ease, box-shadow 0.12s ease;
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25);
+    }
+    .primary-btn:hover { transform: translateY(-1px); }
+    .primary-btn:active { transform: translateY(0); }
+</style>
+
+<div id="content-main" class="module invoice-shell">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 12px;">
+        <div>
+            <h1 style="margin:0; font-size:22px;">{% if invoice_obj %}Edit Invoice {{ invoice_obj.invoice_number }}{% else %}Create Invoice{% endif %}</h1>
+            <p class="meta-text" style="margin:4px 0 0 0;">Build an invoice by selecting visa applications and setting per-item discounts.</p>
+        </div>
+        <span class="pill">{% if invoice_obj %}Editing{% else %}New flow{% endif %}</span>
+    </div>
+
+    {% if errors %}
+        <ul class="errorlist" style="margin-bottom: 20px;">
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        <fieldset class="module aligned panel">
+            <h2>Client & Dates <span class="pill">Step 1</span></h2>
+            <div class="field-grid">
+                <div>
+                    <label class="required" for="client-select">Client</label>
+                    <select id="client-select" name="client" required style="width: 100%; min-width: 260px; padding: 10px; border-radius: 10px; border: 1px solid #d1d5db;">
+                        <option value="">-- Select a client --</option>
+                        {% for client in clients %}
+                            <option value="{{ client.pk }}" {% if client.pk|stringformat:"s" == selected_client_id|stringformat:"s" %}selected{% endif %}>
+                                {{ client.full_name }} — {{ client.email }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="id_due_date">Due date (optional)</label>
+                    <input type="date" id="id_due_date" name="due_date" value="{{ due_date_value }}" style="width:100%; padding:10px; border-radius:10px; border: 1px solid #d1d5db;" />
+                </div>
+                <div>
+                    <label for="id_status">Status</label>
+                    <select id="id_status" name="status" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #d1d5db;">
+                        {% for val,label in status_choices %}
+                            <option value="{{ val }}" {% if val == status_value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="module aligned panel">
+            <h2>Visa Applications <span class="pill">Step 2</span></h2>
+            <p class="meta-text" style="margin: 0 0 10px 0;">Select applications from the dropdown, add them one by one, and set per-item discounts.</p>
+            <input type="hidden" id="items-json" name="items_json" value="{{ items_payload|default:"" }}">
+
+            <div style="border: 1px dashed #cbd5e1; padding: 14px; border-radius: 12px; background: #f8fafc; margin-bottom: 12px;">
+                <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
+                    <div style="flex: 1 1 280px;">
+                        <label class="required" for="application-select">Visa application</label>
+                        <select id="application-select" style="width: 100%; min-width: 240px; padding: 10px; border-radius: 10px; border: 1px solid #d1d5db;">
+                            <option value="">-- Select a client first --</option>
+                        </select>
+                        <div id="applications-empty" class="meta-text" style="margin-top: 6px;">Select a client to load their visa applications.</div>
+                    </div>
+                    <div style="width: 160px;">
+                        <label for="item-discount">Item discount</label>
+                        <input type="number" step="0.01" min="0" id="item-discount" value="0" style="width: 100%; padding:10px; border-radius:10px; border: 1px solid #d1d5db;" />
+                    </div>
+                    <div>
+                        <button type="button" id="add-item-btn" class="primary-btn" disabled style="margin-top: 2px;">+ Add item</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="items-list" class="items-card">
+                <div id="items-empty" class="meta-text">No items added yet.</div>
+            </div>
+        </fieldset>
+
+        <fieldset class="module aligned panel">
+            <h2>Totals <span class="pill">Step 3</span></h2>
+            <div class="field-grid" style="margin-bottom: 12px;">
+                <div>
+                    <label for="id_tax_rate">Tax rate (%)</label>
+                    <input type="number" step="0.01" min="0" id="id_tax_rate" name="tax_rate" value="{{ tax_rate_value|default:'0' }}" style="width:100%; padding:10px; border-radius:10px; border: 1px solid #d1d5db;" />
+                </div>
+            </div>
+            <div class="totals-block">
+                <div class="totals-row">
+                    <span>Items total</span>
+                    <strong id="items-total">0.00</strong>
+                </div>
+                <div class="totals-row">
+                    <span>Discount total</span>
+                    <span id="summary-discount">0.00</span>
+                </div>
+                <div class="totals-row">
+                    <span>Tax</span>
+                    <span id="summary-tax">0.00</span>
+                </div>
+                <div class="totals-row" style="font-size: 16px;">
+                    <span>Total</span>
+                    <strong id="summary-total">0.00</strong>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="module aligned panel">
+            <h2>Notes</h2>
+            <div class="form-row">
+                <textarea name="notes" id="id_notes" rows="4" style="width: 100%; padding:10px; border-radius:10px; border: 1px solid #d1d5db;">{{ notes_value }}</textarea>
+            </div>
+        </fieldset>
+
+        <div class="submit-row" style="margin-top: 20px;">
+            <input type="submit" value="{% translate 'Save' %}" class="primary-btn" />
+            <a href="{% url 'admin:core_invoice_changelist' %}" class="button" style="margin-left: 10px;">{% translate 'Cancel' %}</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    (function() {
+        const clientSelect = document.getElementById('client-select');
+        const appsList = document.getElementById('applications-list');
+        const appsEmpty = document.getElementById('applications-empty');
+        const itemsList = document.getElementById('items-list');
+        const itemsEmpty = document.getElementById('items-empty');
+        const itemsTotalEl = document.getElementById('items-total');
+        const discountEl = document.getElementById('summary-discount');
+        const taxEl = document.getElementById('summary-tax');
+        const totalEl = document.getElementById('summary-total');
+        const taxRateInput = document.getElementById('id_tax_rate');
+        const itemsJsonField = document.getElementById('items-json');
+        const addBtn = document.getElementById('add-item-btn');
+        const itemDiscountInput = document.getElementById('item-discount');
+
+        let availableApps = [];
+        let items = [];
+        const preselectedRaw = {{ items_payload|default:'[]'|safe }};
+
+        function currencySymbol(code) {
+            if (code === 'GBP') return '£';
+            if (code === 'USD') return '$';
+            if (code === 'EUR') return '€';
+            return code ? code + ' ' : '';
+        }
+
+        function recalcTotals() {
+            let subtotal = 0;
+            let currency = 'GBP';
+            items.forEach(item => {
+                subtotal += parseFloat(item.price || 0);
+                if (item.currency) {
+                    currency = item.currency;
+                }
+            });
+
+            const discount = items.reduce((acc, item) => acc + (parseFloat(item.discount || 0) || 0), 0);
+            const taxRate = parseFloat(taxRateInput.value || '0') || 0;
+
+            const afterDiscount = Math.max(subtotal - discount, 0);
+            const taxAmount = (afterDiscount * taxRate) / 100;
+            const total = afterDiscount + taxAmount;
+
+            const symbol = currencySymbol(currency);
+            itemsTotalEl.textContent = symbol + subtotal.toFixed(2);
+            discountEl.textContent = symbol + discount.toFixed(2);
+            taxEl.textContent = symbol + taxAmount.toFixed(2);
+            totalEl.textContent = symbol + total.toFixed(2);
+        }
+
+        function updateAppSelect() {
+            const select = document.getElementById('application-select');
+            const selectedIds = new Set(items.map(i => String(i.id)));
+            select.innerHTML = '';
+
+            if (!availableApps || availableApps.length === 0) {
+                select.innerHTML = '<option value="">No visa applications found for this client</option>';
+                select.disabled = true;
+                addBtn.disabled = true;
+                return;
+            }
+
+            let options = '<option value="">-- Select an application --</option>';
+            availableApps.forEach(app => {
+                if (selectedIds.has(String(app.id))) {
+                    return;
+                }
+                const display = app.name || app.display || ('Application #' + app.id);
+                const price = parseFloat(app.price || 0);
+                const symbol = currencySymbol(app.currency || 'GBP');
+                options += `<option value="${app.id}" data-price="${price}" data-currency="${app.currency || 'GBP'}" data-name="${display}">${display} — ${symbol}${price.toFixed(2)}</option>`;
+            });
+            select.innerHTML = options;
+            select.disabled = false;
+            addBtn.disabled = false;
+        }
+
+        function renderItems() {
+            itemsList.innerHTML = '';
+            if (!items.length) {
+                itemsEmpty.style.display = 'block';
+                itemsList.appendChild(itemsEmpty);
+                recalcTotals();
+                itemsJsonField.value = '';
+                return;
+            }
+            itemsEmpty.style.display = 'none';
+
+            items.forEach((item, idx) => {
+                const row = document.createElement('div');
+                row.className = 'item-row';
+
+                const title = document.createElement('div');
+                const priceVal = parseFloat(item.price || 0);
+                title.innerHTML = `<h4>${item.name}</h4><div class="subline">${currencySymbol(item.currency)}${priceVal.toFixed(2)}</div>`;
+
+                const discountWrap = document.createElement('div');
+                discountWrap.innerHTML = '<label style="margin:0; color:#374151; font-weight:600;">Discount</label>';
+                const discountInput = document.createElement('input');
+                discountInput.type = 'number';
+                discountInput.step = '0.01';
+                discountInput.min = '0';
+                discountInput.value = item.discount || 0;
+                discountInput.style.width = '100%';
+                discountInput.style.padding = '8px';
+                discountInput.style.borderRadius = '8px';
+                discountInput.style.border = '1px solid #d1d5db';
+                discountInput.addEventListener('input', () => {
+                    let val = parseFloat(discountInput.value || 0);
+                    if (isNaN(val) || val < 0) val = 0;
+                    const price = parseFloat(item.price || 0);
+                    if (val > price) val = price;
+                    discountInput.value = val.toFixed(2);
+                    items[idx].discount = val;
+                    recalcTotals();
+                });
+                discountWrap.appendChild(discountInput);
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'button';
+                removeBtn.textContent = 'Remove';
+                removeBtn.style.background = '#fee2e2';
+                removeBtn.style.color = '#b91c1c';
+                removeBtn.style.border = '1px solid #fecaca';
+                removeBtn.style.borderRadius = '10px';
+                removeBtn.style.padding = '8px 10px';
+                removeBtn.addEventListener('click', () => {
+                    items.splice(idx, 1);
+                    updateAppSelect();
+                    renderItems();
+                });
+
+                row.appendChild(title);
+                row.appendChild(discountWrap);
+                row.appendChild(removeBtn);
+                itemsList.appendChild(row);
+            });
+
+            itemsJsonField.value = JSON.stringify(items);
+            recalcTotals();
+        }
+
+        function loadApplications(clientId) {
+            if (!clientId) {
+                availableApps = [];
+                updateAppSelect();
+                items = [];
+                renderItems();
+                appsEmpty.textContent = 'Select a client to load their visa applications.';
+                recalcTotals();
+                return;
+            }
+
+            appsEmpty.style.display = 'block';
+            appsEmpty.textContent = 'Loading applications...';
+
+            const url = new URL("{% url 'admin:core_invoice_get_available_applications' %}", window.location.origin);
+            url.searchParams.set('client_id', clientId);
+            url.searchParams.set('invoice_id', '0');
+
+            fetch(url.toString())
+                .then(resp => resp.json())
+                .then(data => {
+                    if (data.error) {
+                        appsEmpty.textContent = data.error;
+                        availableApps = [];
+                        updateAppSelect();
+                        return;
+                    }
+                    availableApps = (data.available_applications || []).map(app => ({
+                        id: app.id,
+                        name: app.name || app.display || app.text,
+                        price: parseFloat(app.price || 0),
+                        currency: app.currency || 'GBP'
+                    }));
+                    updateAppSelect();
+                    renderItems();
+                })
+                .catch(() => {
+                    appsEmpty.textContent = 'Failed to load applications. Please try again.';
+                    availableApps = [];
+                    updateAppSelect();
+                });
+        }
+
+        clientSelect.addEventListener('change', function() {
+            items = [];
+            itemsJsonField.value = '';
+            loadApplications(this.value);
+        });
+
+        taxRateInput.addEventListener('input', recalcTotals);
+
+        addBtn.addEventListener('click', () => {
+            const select = document.getElementById('application-select');
+            const appId = select.value;
+            if (!appId) return;
+            const selected = availableApps.find(a => String(a.id) === String(appId));
+            if (!selected) return;
+
+            let discountVal = parseFloat(itemDiscountInput.value || 0);
+            if (isNaN(discountVal) || discountVal < 0) discountVal = 0;
+            const priceVal = parseFloat(selected.price || 0);
+            if (discountVal > priceVal) discountVal = priceVal;
+
+            items.push({
+                id: selected.id,
+                name: selected.name || selected.display || selected.text || ('Application #' + selected.id),
+                price: priceVal,
+                currency: selected.currency || 'GBP',
+                discount: discountVal
+            });
+
+            itemDiscountInput.value = '0';
+            updateAppSelect();
+            renderItems();
+        });
+
+        // Initial load if a client was preselected
+        if (clientSelect.value) {
+            try {
+                if (preselectedRaw && typeof preselectedRaw === 'string') {
+                    items = JSON.parse(preselectedRaw) || [];
+                } else if (Array.isArray(preselectedRaw)) {
+                    items = preselectedRaw;
+                }
+            } catch (e) {
+                items = [];
+            }
+            renderItems();
+            loadApplications(clientSelect.value);
+        }
+    })();
+</script>
+{% endblock %}

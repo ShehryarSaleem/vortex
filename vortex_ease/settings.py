@@ -13,7 +13,7 @@ if dotenv_path.exists():
 SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-default-key-change-in-prod")
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "development")
 
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = True
 
 # Parse ALLOWED_HOSTS="a,b,c"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
@@ -24,7 +24,7 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 #  INSTALLED APPS
 # ----------------------------------------------------
 INSTALLED_APPS = [
-    "unfold",
+     "unfold", 
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -148,7 +148,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'contact@vortexease.com'
-EMAIL_HOST_PASSWORD = 'Vortex@AcUk008'
+EMAIL_HOST_PASSWORD = 'Vortex@AcUK008'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

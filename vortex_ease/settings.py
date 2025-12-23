@@ -142,4 +142,13 @@ UNFOLD = {
     ],
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.ionos.co.uk'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'contact@vortexease.com'
+EMAIL_HOST_PASSWORD = 'Vortex@AcUk008'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

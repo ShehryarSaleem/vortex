@@ -128,13 +128,25 @@ data-background="{% static 'img/bg/page-title.png' %}"
     <div class="col-lg-6 mt-5 wow fadeInUp" data-wow-delay="200ms">
       <div class="pe-lg-5">
         <h2 class="mb-1-9">Send Us a Message</h2>
+        {% if messages %}
+        <div class="mb-3">
+          {% for message in messages %}
+          <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
         <form
           class="contact quform"
-          action="https://abroad.websitelayout.net/quform/contact.php"
+          action="{% url 'contact' %}"
           method="post"
           enctype="multipart/form-data"
-          onclick=""
         >
+          {% csrf_token %}
           <div class="quform-elements">
             <div class="row">
               <!-- Begin Text input element -->
@@ -151,6 +163,7 @@ data-background="{% static 'img/bg/page-title.png' %}"
                       type="text"
                       name="name"
                       placeholder="Your name here"
+                      required
                     />
                   </div>
                 </div>
@@ -168,9 +181,10 @@ data-background="{% static 'img/bg/page-title.png' %}"
                     <input
                       class="form-control"
                       id="email"
-                      type="text"
+                      type="email"
                       name="email"
                       placeholder="Your email here"
+                      required
                     />
                   </div>
                 </div>
@@ -234,6 +248,7 @@ data-background="{% static 'img/bg/page-title.png' %}"
                       name="message"
                       rows="6"
                       placeholder="Tell us a few words"
+                      required
                     ></textarea>
                   </div>
                 </div>

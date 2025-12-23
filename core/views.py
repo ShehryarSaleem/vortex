@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpRequest
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.conf import settings
 from .utils import (
     load_config,
     load_testimonial,
@@ -102,6 +105,59 @@ def services(request: HttpRequest):
 
 def contact(request: HttpRequest):
     visa_countries_config = load_visa_services_countries()
+
+    if request.method == "POST":
+        # Get form data
+        name = request.POST.get("name", "").strip()
+        email = request.POST.get("email", "").strip()
+        subject = request.POST.get("subject", "").strip()
+        message = request.POST.get("message", "").strip()
+
+        # Validate required fields
+        if not name or not email or not subject or not message:
+            messages.error(request, "Please fill in all required fields.")
+            return render(request, "contact_us.html", {
+                "visa_countries": visa_countries_config.countries
+            })
+
+        # Validate email format
+        if "@" not in email or "." not in email.split("@")[1]:
+            messages.error(request, "Please enter a valid email address.")
+            return render(request, "contact_us.html", {
+                "visa_countries": visa_countries_config.countries
+            })
+
+        # Prepare email content
+        email_subject = f"Contact Form Inquiry: {subject}"
+        email_message = f"""
+You have received a new contact form inquiry:
+
+Name: {name}
+Email: {email}
+Subject: {subject}
+
+Message:
+{message}
+
+---
+This email was sent from the contact form on your website.
+        """.strip()
+
+        # Send email (both to and from will be the same as configured in settings)
+        try:
+            send_mail(
+                subject=email_subject,
+                message=email_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.DEFAULT_FROM_EMAIL],
+                fail_silently=False,
+            )
+            messages.success(request, "Thank you for your inquiry! We will get back to you soon.")
+            # Redirect to prevent form resubmission on refresh
+            return redirect("contact")
+        except Exception as e:
+            messages.error(request, "Sorry, there was an error sending your message. Please try again later.")
+
     return render(request, "contact_us.html", {
         "visa_countries": visa_countries_config.countries
     })

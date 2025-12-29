@@ -1680,7 +1680,7 @@ class InvoiceAdmin(ModelAdmin):
         notes_value = request.POST.get("notes", "")
         items_payload = request.POST.get("items_json", "[]")
         other_payments_payload = request.POST.get("other_payments_json", "[]")
-        status_value = request.POST.get("status", "draft")
+        status_value = request.POST.get("status") or "draft"
         errors = []
         items_data = []
         other_payments_data = []
@@ -1697,6 +1697,9 @@ class InvoiceAdmin(ModelAdmin):
                     due_date_value = invoice_obj.due_date.isoformat() if invoice_obj.due_date else ""
                     notes_value = invoice_obj.notes or ""
                     status_value = invoice_obj.status
+                else:
+                    if not request.POST.get("status"):
+                        status_value = invoice_obj.status
 
                     # Build items payload from existing applications
                     import json
@@ -1753,7 +1756,7 @@ class InvoiceAdmin(ModelAdmin):
                 errors.append("Invalid tax rate.")
 
             if status_value not in status_choices:
-                status_value = "draft"
+                status_value = invoice_obj.status if invoice_obj else "draft"
 
             # Parse due date
             due_date = None
@@ -1878,6 +1881,7 @@ class InvoiceAdmin(ModelAdmin):
             "errors": errors,
             "invoice_obj": invoice_obj,
             "status_choices": Invoice.INVOICE_STATUS_CHOICES,
+            "status_value": status_value,
         }
         return render(request, "admin/core/invoice/builder.html", context)
 

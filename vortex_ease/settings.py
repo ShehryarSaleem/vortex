@@ -152,7 +152,7 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'contact@vortexease.com'
 EMAIL_HOST_PASSWORD = 'Vortex@AcUK008'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = f"Vortex Ease <{EMAIL_HOST_USER}>"
 
 if ENVIRONMENT != "production" or DEBUG:
     EMAIL_BACKEND = "core.email_backend.InsecureTLSBackend"

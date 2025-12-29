@@ -276,24 +276,15 @@ body{
 @media print{
   @page {
     size: A4;
-    margin: 12mm;
+    margin: 0;
   }
   body{ background:#fff; }
   .page{
     margin: 0;
-    width: auto;
-    min-height: auto;
+    width: var(--a4-w);
+    min-height: var(--a4-h);
     box-shadow: none;
     padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
-    max-width: 100%;
-  }
-  .items table,
-  .summary{
-    max-width: 100%;
-  }
-  .items thead th.col-total,
-  .items tbody td.num{
-    padding-right: 24px;
   }
   .footer{
     position: relative;

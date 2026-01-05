@@ -1712,28 +1712,6 @@ class InvoiceAdmin(ModelAdmin):
                 else:
                     if not request.POST.get("status"):
                         status_value = invoice_obj.status
-
-                    # Build items payload from existing applications
-                    import json
-                    items_list = []
-                    applications = list(invoice_obj.invoice_applications.select_related("visa_application"))
-                    discount_total = invoice_obj.discount or Decimal("0")
-                    discount_share = (discount_total / len(applications)) if applications else Decimal("0")
-                    for ia in applications:
-                        app = ia.visa_application
-                        items_list.append({
-                            "id": app.pk,
-                            "name": f"{app.get_visa_type_display()} - {app.get_stage_display()}",
-                            "price": float(ia.unit_price),
-                            "currency": invoice_obj.currency or "GBP",
-                            "discount": float(discount_share) if discount_share else 0,
-                        })
-                    items_payload = json.dumps(items_list)
-
-                    other_payments_payload = json.dumps([
-                        {"description": op.description, "amount": float(op.amount)}
-                        for op in invoice_obj.other_payments.all()
-                    ])
             except Invoice.DoesNotExist:
                 errors.append("Invoice not found for editing.")
                 invoice_obj = None
@@ -1770,6 +1748,9 @@ class InvoiceAdmin(ModelAdmin):
             if status_value not in status_choices:
                 status_value = invoice_obj.status if invoice_obj else "draft"
 
+            if not items_data:
+                errors.append("Add at least one visa application item.")
+
             # Parse due date
             due_date = None
             if due_date_value:
@@ -1794,6 +1775,7 @@ class InvoiceAdmin(ModelAdmin):
                     invoice.tax_rate = tax_rate_decimal
                     invoice.notes = notes_value
                     invoice.status = status_value
+                    invoice.save()
                 else:
                     invoice = Invoice.objects.create(
                         client=client,
@@ -1808,8 +1790,8 @@ class InvoiceAdmin(ModelAdmin):
                 created_items = 0
                 discount_total = Decimal("0.00")
 
-                # Clear existing items when editing
-                if is_edit:
+                # Clear existing items when editing only after validation passes
+                if is_edit and not errors:
                     InvoiceApplication.objects.filter(invoice=invoice).delete()
                     InvoiceOtherPayment.objects.filter(invoice=invoice).delete()
 

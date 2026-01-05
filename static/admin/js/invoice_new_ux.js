@@ -1,26 +1,32 @@
 (function($) {
     'use strict';
 
+    var isBuilderPage = window.location.pathname.indexOf('/builder/') !== -1;
+    var hasBuilderForm = document.getElementById('invoice_form') && document.getElementById('client-select');
+    if (window.INVOICE_BUILDER || isBuilderPage || hasBuilderForm) {
+        return;
+    }
+
+    if (!$) {
+        if (typeof window.django !== 'undefined' && window.django.jQuery) {
+            $ = window.django.jQuery;
+            console.log('Using django.jQuery');
+        } else if (typeof window.jQuery !== 'undefined') {
+            $ = window.jQuery;
+            console.log('Using jQuery');
+        } else if (typeof window.$ !== 'undefined') {
+            $ = window.$;
+            console.log('Using window.$');
+        } else {
+            console.error('jQuery not found!');
+            return;
+        }
+    }
+
     console.log('=== Invoice UX Script Loading ===');
 
     var selectedApplications = [];
     var availableApplications = [];
-
-    // Get jQuery - try multiple sources
-    var $ = null;
-    if (typeof django !== 'undefined' && django.jQuery) {
-        $ = django.jQuery;
-        console.log('Using django.jQuery');
-    } else if (typeof jQuery !== 'undefined') {
-        $ = jQuery;
-        console.log('Using jQuery');
-    } else if (typeof window.$ !== 'undefined') {
-        $ = window.$;
-        console.log('Using window.$');
-    } else {
-        console.error('jQuery not found!');
-        return;
-    }
 
     function getSelectedApplicationsTotal() {
         var total = 0;
@@ -849,4 +855,4 @@
         initialize();
     });
 
-})(django.jQuery || jQuery || window.$);
+})(window.django && window.django.jQuery ? window.django.jQuery : (window.jQuery || window.$));

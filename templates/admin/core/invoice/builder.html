@@ -3,6 +3,13 @@
 
 {% block title %}{% if invoice_obj %}Edit Invoice {{ invoice_obj.invoice_id|default:invoice_obj.invoice_number }}{% else %}Create Invoice{% endif %} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
+{% block extrahead %}
+{{ block.super }}
+<script>
+    window.INVOICE_BUILDER = true;
+</script>
+{% endblock %}
+
 {% block content %}
 <style>
     /* Compact modern styling scoped to this page */
@@ -473,8 +480,8 @@
         let availableApps = [];
         let items = [];
         let otherPayments = [];
-        const preselectedRaw = {{ items_payload|default:'[]'|safe }};
-        const otherPaymentsRaw = {{ other_payments_payload|default:'[]'|safe }};
+        const preselectedRaw = itemsJsonField.value || '[]';
+        const otherPaymentsRaw = otherPaymentsJsonField.value || '[]';
 
         function currencySymbol(code) {
             if (code === 'GBP') return '£';
@@ -806,6 +813,14 @@
             renderItems();
             renderOtherPayments();
             loadApplications(clientSelect.value);
+        }
+
+        const form = document.getElementById('invoice_form');
+        if (form) {
+            form.addEventListener('submit', () => {
+                itemsJsonField.value = items.length ? JSON.stringify(items) : '';
+                otherPaymentsJsonField.value = otherPayments.length ? JSON.stringify(otherPayments) : '';
+            });
         }
     })();
 </script>

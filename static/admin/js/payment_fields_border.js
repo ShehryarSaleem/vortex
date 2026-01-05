@@ -2,6 +2,10 @@
 (function($) {
     'use strict';
 
+    if (!$) {
+        return;
+    }
+
     function applyUnfoldStylingToPaymentFields() {
         // Find all payment-related fields in inline groups
         $('.inline-group .stacked input, .inline-group .stacked select, .inline-group .stacked textarea').each(function() {
@@ -160,9 +164,9 @@
     });
 
     // Also run when formset is added
-    if (typeof django !== 'undefined' && django.jQuery) {
-        django.jQuery(document).on('formset:added', function() {
+    if (typeof window.django !== 'undefined' && window.django.jQuery) {
+        window.django.jQuery(document).on('formset:added', function() {
             setTimeout(setupPaymentTwoColumnLayout, 100);
         });
     }
-})(django.jQuery || jQuery);
+})(window.django && window.django.jQuery ? window.django.jQuery : (window.jQuery || window.$));

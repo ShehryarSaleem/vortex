@@ -19,8 +19,6 @@
         </div>
       </div>
 
-      <div class="divider"></div>
-
       <div class="title-block">
         <h1 class="title">INVOICE</h1>
 
@@ -28,6 +26,14 @@
           <div class="meta-row">
             <span class="meta-label">Invoice ID :</span>
             <span class="meta-value">#{{ display_invoice_id }}</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Invoice Date :</span>
+            <span class="meta-value">{{ invoice.invoice_date|date:"F j, Y" }}</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Due Date :</span>
+            <span class="meta-value">{{ invoice.due_date|date:"F j, Y" }}</span>
           </div>
 
           <div class="contact">

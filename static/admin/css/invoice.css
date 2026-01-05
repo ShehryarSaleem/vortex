@@ -52,19 +52,23 @@ body{
    ========================= */
 .header{
   display:grid;
-  grid-template-columns: 1fr 60px 1.2fr; /* divider spacing */
+  grid-template-columns: 1fr 1.2fr;
   gap: 50px;
-  align-items: center;
+  align-items: start;
   margin-bottom: 26px;
 }
 
 .brand{
   display:flex;
   flex-direction:column;
+  align-items: flex-start;
   gap: 26px;
 }
 
 .logo{
+  display: block;
+  align-self: flex-start;
+  margin-left: 0;
   width: 140px;
   height: 140px;
   object-fit: contain;
@@ -83,13 +87,7 @@ body{
 
 /* Divider line — fixed to match Canva (less tilt, longer) */
 .divider{
-  width: 2px;
-  height: 210px;
-  background: #d6d6d6;
-  transform: rotate(-15deg);
-  justify-self: center;
-  position: relative;
-  left: 6px; /* tiny nudge */
+  display: none;
 }
 
 /* Right title block */
@@ -103,9 +101,17 @@ body{
 .title{
   margin: 0;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 74px;
+  font-size: 60px;
   letter-spacing: 1px;
   font-weight: 500;
+}
+
+.meta-value{
+  font-weight: 400;
+}
+
+.meta-label{
+  font-weight: 400;
 }
 
 .meta{
@@ -123,10 +129,9 @@ body{
 }
 
 .meta-label{ color: var(--muted); }
-.meta-value{ font-weight: 800; }
 
 .contact{
-  margin-top: 46px;
+  margin-top: 30px;
   line-height: 1.8;
   font-size: 20px;
 }
